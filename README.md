@@ -195,11 +195,9 @@ The biggest hurdle was figuring out how to link the front-end (Angular) to the b
 
 ### Special Thanks
 
-* Leonardo Rodriguez - my instructor who taught me all the concepts used to build the front-end of this project, including HTML, CSS, TypeScript, and Angular.
-* [GitHub](https://github.com/LRodriguez92) 
+* Leonardo Rodriguez - my instructor who taught me all the concepts used to build the front-end of this project, including HTML, CSS, TypeScript, and Angular. [GitHub](https://github.com/LRodriguez92) 
 
-* Suresh Sigera - my instructor who taught me all the concepts used to build the back-end of this project, including Java, the Spring framework, and API testing tools such as Postman, MockMVC, and REST-Assured / Cucumber. 
-* [GitHub](https://github.com/sureshmelvinsigera)
+* Suresh Sigera - my instructor who taught me all the concepts used to build the back-end of this project, including Java, the Spring framework, and API testing tools such as Postman, MockMVC, and REST-Assured / Cucumber. [GitHub](https://github.com/sureshmelvinsigera)
 
 
 
