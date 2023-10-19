@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface GiftRepository extends JpaRepository {
+public interface GiftRepository extends JpaRepository<Gift, Long> {
 
     Optional<Gift> findById(Long giftId);
 
