@@ -5,10 +5,8 @@ import com.example.christmasplanner.service.StockingStufferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +53,20 @@ public class StockingStufferController {
         } else {
             message.put("message", "stocking stuffer with id " + stockingStufferId + " not found");
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping(path="stockingstuffers")
+    public ResponseEntity<?> createStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) {
+        StockingStuffer newStockingStuffer = stockingStufferService.createStockingStuffer(stockingStufferObject);
+
+        if (stockingStufferObject != null) {
+            message.put("message", "success");
+            message.put("data", newStockingStuffer);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "stocking stuffer with name " + stockingStufferObject.getName() + " already exists");
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
     }
 
