@@ -5,10 +5,13 @@ import com.example.christmasplanner.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 
 
@@ -42,6 +45,18 @@ public class GiftController {
         }
     }
 
+    @GetMapping(path="/gifts/{giftId}/")
+    public ResponseEntity<?> getGiftById(@PathVariable(value="giftId") Long giftId) {
+        Optional<Gift> giftOptional = giftService.getGiftById(giftId);
 
+        if (giftOptional.isPresent()) {
+            message.put("message", "success");
+            message.put("data", giftOptional);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "gift with id " + giftId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
