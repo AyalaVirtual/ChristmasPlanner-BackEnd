@@ -1,10 +1,12 @@
 package com.example.christmasplanner.service;
 
+import com.example.christmasplanner.exception.InformationNotFoundException;
 import com.example.christmasplanner.model.Decoration;
 import com.example.christmasplanner.repository.DecorationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -22,6 +24,17 @@ public class DecorationService {
     public List<Decoration> getAllDecorations() {
         return decorationRepository.findAll();
     }
+
+    public Optional<Decoration> getDecorationById(Long decorationId) {
+        Optional<Decoration> decorationOptional = decorationRepository.findById(decorationId);
+
+        if (decorationOptional.isPresent()) {
+            return decorationOptional;
+        } else {
+            throw new InformationNotFoundException("decoration with id " + decorationId + " not found");
+        }
+    }
+
 
 
 }
