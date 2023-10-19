@@ -5,14 +5,10 @@ import com.example.christmasplanner.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
-
-import javax.swing.text.html.Option;
 
 
 @RestController
@@ -68,11 +64,20 @@ public class GiftController {
             message.put("data", newGift);
             return new ResponseEntity<>(message, HttpStatus.CREATED);
         } else {
-            message.put("message", "gift not created");
+            message.put("message", "gift with name " + giftObject.getName() + " already exists");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
     }
 
+    @PutMapping(path="/gifts/{giftId}/")
+    public ResponseEntity<?> updateGift(@PathVariable(value="giftId") Long giftId, @RequestBody Gift giftObject) {
+        Optional<Gift> giftToUpdate = giftService.updateGift(giftId, giftObject);
 
+        if (giftToUpdate.isPresent()) {
+            message.put("message", "success");
+            message.put("data", giftToUpdate);
+            return new ResponseEntity<>(message, "gift with id " + giftId + " not found");
+        }
+    }
 
 }

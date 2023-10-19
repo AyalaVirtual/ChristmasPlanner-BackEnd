@@ -67,7 +67,7 @@ public class DecorationController {
             message.put("data", newDecoration);
             return new ResponseEntity<>(message, HttpStatus.CREATED);
         } else {
-            message.put("message", "decoration not created");
+            message.put("message", "decoration with name " + decorationObject.getName() + " already exists");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
     }
@@ -77,7 +77,7 @@ public class DecorationController {
         Optional<Decoration> decorationToUpdate = decorationService.updateDecoration(decorationId, decorationObject);
 
         if (decorationToUpdate.isPresent()) {
-            message.put("message", "decoration with id " + decorationId + " has been successfully updated");
+            message.put("message", "success");
             message.put("data", decorationToUpdate);
             return new ResponseEntity<>(message, HttpStatus.OK);
         } else {
