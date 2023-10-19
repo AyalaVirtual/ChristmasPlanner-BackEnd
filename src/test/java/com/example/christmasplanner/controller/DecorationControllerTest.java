@@ -16,12 +16,11 @@ import java.util.Optional;
 import org.mockito.Mockito;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 
 
 @WebMvcTest(DecorationController.class)
@@ -88,7 +87,7 @@ public class DecorationControllerTest {
 
     /**
      *
-     * This test says that when we call decorationService.createDecoration(), create a mock of any decoration, then return the decoration.
+     * This test says that when we call decorationService.createDecoration(), create a mock of any Decoration, then return the decoration.
      * Create a mock request and set it equal to calling a POST request to the endpoint ("/api/decorations/"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Accept the content and convert it from Java to JSON, then write the value of the decoration's record as a string.
      * Perform the mock request and expect the response status to be isCreated. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
      *
@@ -112,6 +111,29 @@ public class DecorationControllerTest {
                 .andExpect(jsonPath("$.data.materials").value(DECORATION_1.getMaterials()))
                 .andExpect(jsonPath("$.data.directions").value(DECORATION_1.getDirections()))
                 .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
+    /**
+     * This test says that when we call decorationService.updateDecoration() in instances where the decoration is not found, to create a mock of any Decoration and then return an empty optional.
+     * Create a mock request and set it equal to calling a DELETE request to the endpoint and uri variable ("/api/decorations/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON', and accept it.
+     * Perform the mock request and expect the response status to be not found. Expect the jsonPath of the payload and a not null value. And expect the jsonPath of the 'message' key of the payload to have a value of 'cannot find decoration with id 1'. Then print the message.
+     *
+     * @throws Exception if decoration not found
+     */
+    @Test
+    public void updateDecorationRecord_recordNotFound() throws Exception {
+
+        when(decorationService.updateDecoration(anyLong(), Mockito.any(Decoration.class))).thenReturn(Optional.empty());
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.delete("/api/decorations/{id}/", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.message").value("decoration with id 1 not found"))
                 .andDo(print());
     }
 
