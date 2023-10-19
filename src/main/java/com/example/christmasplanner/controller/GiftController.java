@@ -1,5 +1,6 @@
 package com.example.christmasplanner.controller;
 
+import com.example.christmasplanner.exception.InformationNotFoundException;
 import com.example.christmasplanner.model.Gift;
 import com.example.christmasplanner.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.http.HttpStatus;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class GiftController {
 
     private GiftService giftService;
@@ -29,6 +30,7 @@ public class GiftController {
 
     @GetMapping(path="/gifts/")
     public ResponseEntity<?> getAllGifts() {
+
         List<Gift> giftList = giftService.getAllGifts();
 
         if (giftList.isEmpty()) {
@@ -43,6 +45,7 @@ public class GiftController {
 
     @GetMapping(path="/gifts/{giftId}/")
     public ResponseEntity<?> getGiftById(@PathVariable(value="giftId") Long giftId) {
+
         Optional<Gift> giftOptional = giftService.getGiftById(giftId);
 
         if (giftOptional.isPresent()) {
@@ -57,6 +60,7 @@ public class GiftController {
 
     @PostMapping(path="/gifts/")
     public ResponseEntity<?> createGift(@RequestBody Gift giftObject) {
+
         Gift newGift = giftService.createGift(giftObject);
 
         if (newGift != null) {
@@ -65,12 +69,13 @@ public class GiftController {
             return new ResponseEntity<>(message, HttpStatus.CREATED);
         } else {
             message.put("message", "gift with name " + giftObject.getName() + " already exists");
-            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(message, HttpStatus.OK);
         }
     }
 
     @PutMapping(path="/gifts/{giftId}/")
-    public ResponseEntity<?> updateGift(@PathVariable(value="giftId") Long giftId, @RequestBody Gift giftObject) {
+    public ResponseEntity<?> updateGift(@PathVariable(value="giftId") Long giftId, @RequestBody Gift giftObject) throws InformationNotFoundException {
+
         Optional<Gift> giftToUpdate = giftService.updateGift(giftId, giftObject);
 
         if (giftToUpdate.isPresent()) {

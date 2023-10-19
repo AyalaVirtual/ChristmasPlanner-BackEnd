@@ -37,17 +37,18 @@ public class DecorationService {
     }
 
     public Decoration createDecoration(Decoration decorationObject) {
-        Optional<Decoration> decorationOptional = Optional.ofNullable(decorationRepository.findByName(decorationObject.getName()));
+        Decoration decoration = decorationRepository.findByName(decorationObject.getName());
 
-        if (decorationOptional.isEmpty()) {
-            return decorationRepository.save(decorationObject);
-        } else {
+        if (decoration != null) {
             throw new InformationExistException("decoration with name " + decorationObject.getName() + " already exists");
+        } else {
+            return decorationRepository.save(decorationObject);
         }
     }
 
     public Optional<Decoration> updateDecoration(Long decorationId, Decoration decorationObject) {
-        Optional<Decoration> decorationOptional = decorationRepository.findById(decorationObject.getId());
+
+        Optional<Decoration> decorationOptional = decorationRepository.findById(decorationId);
 
         if (decorationOptional.isPresent()) {
             decorationOptional.get().setName(decorationObject.getName());

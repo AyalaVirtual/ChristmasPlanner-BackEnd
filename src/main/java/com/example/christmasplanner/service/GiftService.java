@@ -37,13 +37,13 @@ public class GiftService {
     }
 
     public Gift createGift(Gift giftObject) {
-        Optional<Gift> giftOptional = Optional.ofNullable(giftRepository.findByName(giftObject.getName()));
+        Gift gift = giftRepository.findByName(giftObject.getName());
 
-        if (giftOptional.isEmpty()) {
+        if (gift != null) {
+            throw new InformationExistException("gift with name " + giftObject.getName() + " already exists");
+        } else {
             giftRepository.save(giftObject);
             return giftObject;
-        } else {
-            throw new InformationExistException("gift with name " + giftObject.getName() + " already exists");
         }
     }
 

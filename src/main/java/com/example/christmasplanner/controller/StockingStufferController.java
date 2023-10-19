@@ -1,5 +1,6 @@
 package com.example.christmasplanner.controller;
 
+import com.example.christmasplanner.exception.InformationNotFoundException;
 import com.example.christmasplanner.model.StockingStuffer;
 import com.example.christmasplanner.service.StockingStufferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class StockingStufferController {
 
     private StockingStufferService stockingStufferService;
@@ -31,6 +32,7 @@ public class StockingStufferController {
 
     @GetMapping(path="/stockingstuffers/")
     public ResponseEntity<?> getAllStockingStuffers() {
+
         List<StockingStuffer> stockingStufferList = stockingStufferService.getAllStockingStuffers();
 
         if (stockingStufferList.isEmpty()) {
@@ -45,6 +47,7 @@ public class StockingStufferController {
 
     @GetMapping(path="/stockingstuffers/{stockingStufferId}/")
     public ResponseEntity<?> getStockingStufferById(@PathVariable(value="stockingStufferId") Long stockingStufferId) {
+
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferService.getStockingStufferById(stockingStufferId);
 
         if (stockingStufferOptional.isPresent()) {
@@ -59,9 +62,10 @@ public class StockingStufferController {
 
     @PostMapping(path="/stockingstuffers/")
     public ResponseEntity<?> createStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) {
+
         StockingStuffer newStockingStuffer = stockingStufferService.createStockingStuffer(stockingStufferObject);
 
-        if (stockingStufferObject != null) {
+        if (newStockingStuffer != null) {
             message.put("message", "success");
             message.put("data", newStockingStuffer);
             return new ResponseEntity<>(message, HttpStatus.OK);
@@ -72,7 +76,8 @@ public class StockingStufferController {
     }
 
     @PutMapping(path="/stockingstuffers/{stockingStufferId}/")
-    public ResponseEntity<?> updateStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) {
+    public ResponseEntity<?> updateStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) throws InformationNotFoundException {
+
         Optional<StockingStuffer> stockingStufferToUpdate = stockingStufferService.updateStockingStuffer(stockingStufferId, stockingStufferObject);
 
         if (stockingStufferToUpdate.isPresent()) {

@@ -1,5 +1,7 @@
 package com.example.christmasplanner.controller;
 
+import com.example.christmasplanner.exception.InformationExistException;
+import com.example.christmasplanner.exception.InformationNotFoundException;
 import com.example.christmasplanner.model.Decoration;
 import com.example.christmasplanner.service.DecorationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class DecorationController {
 
     private DecorationService decorationService;
@@ -29,6 +31,7 @@ public class DecorationController {
 
     @GetMapping(path="/decorations/")
     public ResponseEntity<?> getAllDecorations() {
+
         List<Decoration> decorationList = decorationService.getAllDecorations();
 
         if (decorationList.isEmpty()) {
@@ -43,6 +46,7 @@ public class DecorationController {
 
     @GetMapping(path="/decorations/{decorationId}/")
     public ResponseEntity<?> getDecorationById(@PathVariable(value="decorationId") Long decorationId) {
+
         Optional<Decoration> decorationOptional = decorationService.getDecorationById(decorationId);
 
         if (decorationOptional.isPresent()) {
@@ -56,7 +60,8 @@ public class DecorationController {
     }
 
     @PostMapping(path="/decorations/")
-    public ResponseEntity<?> createDecoration(@RequestBody Decoration decorationObject) {
+    public ResponseEntity<?> createDecoration(@RequestBody Decoration decorationObject)  {
+
         Decoration newDecoration = decorationService.createDecoration(decorationObject);
 
         if (newDecoration != null) {
@@ -64,13 +69,14 @@ public class DecorationController {
             message.put("data", newDecoration);
             return new ResponseEntity<>(message, HttpStatus.CREATED);
         } else {
-            message.put("message", "decoration with name " + decorationObject.getName() + " already exists");
+            message.put("message", "unable to create a decoration at this time");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
     }
 
     @PutMapping(path="/decorations/{decorationId}/")
-    public ResponseEntity<?> updateDecoration(@PathVariable(value="decorationId") Long decorationId, @RequestBody Decoration decorationObject) {
+    public ResponseEntity<?> updateDecoration(@PathVariable(value="decorationId") Long decorationId, @RequestBody Decoration decorationObject) throws InformationNotFoundException {
+
         Optional<Decoration> decorationToUpdate = decorationService.updateDecoration(decorationId, decorationObject);
 
         if (decorationToUpdate.isPresent()) {

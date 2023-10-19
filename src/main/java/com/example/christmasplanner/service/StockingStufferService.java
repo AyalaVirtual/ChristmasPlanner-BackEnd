@@ -37,13 +37,13 @@ public class StockingStufferService {
     }
 
     public StockingStuffer createStockingStuffer(StockingStuffer stockingStufferObject) {
-        Optional<StockingStuffer> stockingStufferOptional = Optional.ofNullable(stockingStufferRepository.findByName(stockingStufferObject.getName()));
+        StockingStuffer stockingStuffer = stockingStufferRepository.findByName(stockingStufferObject.getName());
 
-        if (stockingStufferOptional.isEmpty()) {
+        if (stockingStuffer != null) {
+            throw new InformationExistException("stocking stuffer with name " + stockingStufferObject.getName() + " already exists");
+        } else {
             stockingStufferRepository.save(stockingStufferObject);
             return stockingStufferObject;
-        } else {
-            throw new InformationExistException("stocking stuffer with name " + stockingStufferObject.getName() + " already exists");
         }
     }
 
