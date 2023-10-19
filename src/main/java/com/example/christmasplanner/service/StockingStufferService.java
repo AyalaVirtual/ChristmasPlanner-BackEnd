@@ -47,6 +47,17 @@ public class StockingStufferService {
         }
     }
 
+    public Optional<StockingStuffer> updateStockingStuffer(Long stockingStufferId, StockingStuffer stockingStufferObject) {
+        Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
 
+        if (stockingStufferOptional.isPresent()) {
+            stockingStufferOptional.get().setName(stockingStufferObject.getName());
+            stockingStufferOptional.get().setDescription(stockingStufferObject.getDescription());
+            stockingStufferRepository.save(stockingStufferOptional.get());
+            return stockingStufferOptional;
+        } else {
+            throw new InformationNotFoundException("stocking stuffer with id " + stockingStufferId + " not found");
+        }
+    }
 
 }
