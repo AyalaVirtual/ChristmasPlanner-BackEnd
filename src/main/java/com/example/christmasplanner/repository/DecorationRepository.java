@@ -12,5 +12,5 @@ public interface DecorationRepository extends JpaRepository<Decoration, Long> {
 
     Optional<Decoration> findById(Long decorationId);
 
-    Optional<Decoration> findByName(String decorationName);
+    Decoration findByName(String decorationName);
 }
