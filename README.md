@@ -78,13 +78,13 @@ As a user I want to add a new Christmas decorating idea so that I can share my d
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can add new Christmas decorating ideas, specifying the name, materials needed, and instructions. 
+* User can add new Christmas decorating ideas, specifying the name, materials needed, and directions. 
 * User can save the Christmas decorating idea to the overall list of Christmas decorating inspiration.
 
 
 <b>User Story 4:</b>
 <br>
-As a user I want to update/edit the details of a Christmas decorating idea, including the name, materials needed, and instructions. (PUT Christmas decorating idea)
+As a user I want to update/edit the details of a Christmas decorating idea, including the name, materials needed, and directions. (PUT Christmas decorating idea)
 
 <b>Acceptance Criteria:</b>
 <br>
@@ -212,3 +212,4 @@ The biggest hurdle was figuring out how to link the front-end (Angular) to the b
 
 
 
+``
