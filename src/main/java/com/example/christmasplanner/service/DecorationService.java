@@ -46,6 +46,19 @@ public class DecorationService {
         }
     }
 
+    public Optional<Decoration> updateDecoration(Long decorationId, Decoration decorationObject) {
+        Optional<Decoration> decorationOptional = decorationRepository.findById(decorationObject.getId());
+
+        if (decorationOptional.isPresent()) {
+            decorationOptional.get().setName(decorationObject.getName());
+            decorationOptional.get().setMaterials(decorationObject.getMaterials());
+            decorationOptional.get().setDirections(decorationObject.getDirections());
+            decorationRepository.save(decorationOptional.get());
+        } else {
+            throw new InformationNotFoundException("decoration with id " + decorationId + " not found");
+        }
+    }
+
 
 
 }
