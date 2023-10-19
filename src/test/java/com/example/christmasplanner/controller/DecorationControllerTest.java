@@ -42,6 +42,12 @@ public class DecorationControllerTest {
     Decoration DECORATION_3 = new Decoration(3L, "Floating Candle Centerpiece", "Clear glass vases or bowls, water, floating candles, holly leaves, cranberries", "Fill clear glass vases or bowls with water, add floating candles, and garnish with holly leaves and cranberries for a beautiful and elegant centerpiece.");
 
 
+    /**
+     * This test says that when we call decorationService.getAllDecorations(), then to return all decorations.
+     * Use mockMvc to perform a GET request to the endpoint ("/api/decorations/"), set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the 'data' key of the payload to have a size of 3. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if list of decorations not found
+     */
     @Test
     public void getAllDecorationRecords_success() throws Exception {
         List<Decoration> decorationList = new ArrayList<>(Arrays.asList(DECORATION_1, DECORATION_2, DECORATION_3));
