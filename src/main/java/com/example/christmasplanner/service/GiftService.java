@@ -47,6 +47,17 @@ public class GiftService {
         }
     }
 
+    public Optional<Gift> updateGift(Long giftId, Gift giftObject) {
+        Optional<Gift> giftOptional = giftRepository.findById(giftId);
 
+        if (giftOptional.isPresent()) {
+            giftOptional.get().setName(giftObject.getName());
+            giftOptional.get().setDescription(giftObject.getDescription());
+            giftRepository.save(giftOptional.get());
+            return giftOptional;
+        } else {
+            throw new InformationNotFoundException("gift with id " + giftId + " not found");
+        }
+    }
 
 }
