@@ -5,10 +5,7 @@ import com.example.christmasplanner.service.DecorationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.HashMap;
@@ -58,6 +55,20 @@ public class DecorationController {
         } else {
             message.put("message", "decoration with id" + decorationId + " not found");
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping(path="/decorations/")
+    public ResponseEntity<?> createDecoration(@RequestBody Decoration decorationObject) {
+        Decoration newDecoration = decorationService.createDecoration(decorationObject);
+
+        if (newDecoration != null) {
+            message.put("message", "success");
+            message.put("data", newDecoration);
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        } else {
+            message.put("message", "decoration not created");
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
     }
 
