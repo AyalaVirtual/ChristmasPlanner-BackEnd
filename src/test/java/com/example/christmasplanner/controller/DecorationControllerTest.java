@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Optional;
 import org.mockito.Mockito;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -69,6 +70,7 @@ public class DecorationControllerTest {
      *
      * @throws Exception if decoration not found
      */
+    @Test
     public void getDecorationRecord_success() throws Exception {
 
         when(decorationService.getDecorationById(DECORATION_1.getId())).thenReturn(Optional.of(DECORATION_1));
@@ -76,6 +78,35 @@ public class DecorationControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/decorations/{id}/", "1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.id").value(DECORATION_1.getId()))
+                .andExpect(jsonPath("$.data.name").value(DECORATION_1.getName()))
+                .andExpect(jsonPath("$.data.materials").value(DECORATION_1.getMaterials()))
+                .andExpect(jsonPath("$.data.directions").value(DECORATION_1.getDirections()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
+    /**
+     *
+     * This test says that when we call decorationService.createDecoration(), create a mock of any decoration, then return the decoration.
+     * Create a mock request and set it equal to calling a POST request to the endpoint ("/api/decorations/"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Accept the content and convert it from Java to JSON, then write the value of the decoration's record as a string.
+     * Perform the mock request and expect the response status to be isCreated. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if decoration already exists
+     */
+    @Test
+    public void createDecorationRecord_success() throws Exception {
+
+        when(decorationService.createDecoration(Mockito.any(Decoration.class))).thenReturn(DECORATION_1);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/decorations")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(DECORATION_1));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$", notNullValue()))
                 .andExpect(jsonPath("$.data.id").value(DECORATION_1.getId()))
                 .andExpect(jsonPath("$.data.name").value(DECORATION_1.getName()))
                 .andExpect(jsonPath("$.data.materials").value(DECORATION_1.getMaterials()))
