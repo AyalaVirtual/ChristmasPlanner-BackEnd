@@ -1,5 +1,6 @@
 package com.example.christmasplanner.service;
 
+import com.example.christmasplanner.exception.InformationExistException;
 import com.example.christmasplanner.exception.InformationNotFoundException;
 import com.example.christmasplanner.model.Gift;
 import com.example.christmasplanner.repository.GiftRepository;
@@ -35,6 +36,16 @@ public class GiftService {
         }
     }
 
+    public Gift createGift(Gift giftObject) {
+        Optional<Gift> giftOptional = Optional.ofNullable(giftRepository.findByName(giftObject.getName()));
+
+        if (giftOptional.isEmpty()) {
+            giftRepository.save(giftObject);
+            return giftObject;
+        } else {
+            throw new InformationExistException("gift with name " + giftObject.getName() + " already exists");
+        }
+    }
 
 
 }
