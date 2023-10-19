@@ -72,6 +72,18 @@ public class DecorationController {
         }
     }
 
+    @PutMapping(path="/decorations/{decorationId}/")
+    public ResponseEntity<?> updateDecoration(@PathVariable(value="decorationId") Long decorationId, @RequestBody Decoration decorationObject) {
+        Optional<Decoration> decorationToUpdate = decorationService.updateDecoration(decorationId, decorationObject);
 
+        if (decorationToUpdate.isPresent()) {
+            message.put("message", "decoration with id " + decorationId + " has been successfully updated");
+            message.put("data", decorationToUpdate);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "decoration with id " + decorationId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
