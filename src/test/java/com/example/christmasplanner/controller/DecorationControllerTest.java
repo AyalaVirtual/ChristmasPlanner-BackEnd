@@ -63,6 +63,27 @@ public class DecorationControllerTest {
                 .andDo(print());
     }
 
+    /**
+     * This test says that when we call decorationService.getDecorationById(), then to return an optional of the decoration if it exists.
+     * Perform a GET request to the endpoint and uri variable ("/api/decorations/{id}/", "1"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if decoration not found
+     */
+    public void getDecorationRecord_success() throws Exception {
+
+        when(decorationService.getDecorationById(DECORATION_1.getId())).thenReturn(Optional.of(DECORATION_1));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/decorations/{id}/", "1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.id").value(DECORATION_1.getId()))
+                .andExpect(jsonPath("$.data.name").value(DECORATION_1.getName()))
+                .andExpect(jsonPath("$.data.materials").value(DECORATION_1.getMaterials()))
+                .andExpect(jsonPath("$.data.directions").value(DECORATION_1.getDirections()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
 
 
 }
