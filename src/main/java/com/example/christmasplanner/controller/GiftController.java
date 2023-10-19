@@ -4,15 +4,15 @@ import com.example.christmasplanner.model.Gift;
 import com.example.christmasplanner.service.GiftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+
+import javax.swing.text.html.Option;
 
 
 @RestController
@@ -59,6 +59,19 @@ public class GiftController {
         }
     }
 
+    @PostMapping(path="/gifts/")
+    public ResponseEntity<?> createGift(@RequestBody Gift giftObject) {
+        Gift newGift = giftService.createGift(giftObject);
+
+        if (newGift != null) {
+            message.put("message", "success");
+            message.put("data", newGift);
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
+        } else {
+            message.put("message", "gift not created");
+            return new ResponseEntity<>(message, HttpStatus.CONFLICT);
+        }
+    }
 
 
 
