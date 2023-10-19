@@ -1,5 +1,6 @@
 package com.example.christmasplanner.service;
 
+import com.example.christmasplanner.exception.InformationExistException;
 import com.example.christmasplanner.exception.InformationNotFoundException;
 import com.example.christmasplanner.model.StockingStuffer;
 import com.example.christmasplanner.repository.StockingStufferRepository;
@@ -32,6 +33,17 @@ public class StockingStufferService {
             return stockingStufferOptional;
         } else {
             throw new InformationNotFoundException("stocking stuffer with id " + stockingStufferId + " not found");
+        }
+    }
+
+    public StockingStuffer createStockingStuffer(StockingStuffer stockingStufferObject) {
+        Optional<StockingStuffer> stockingStufferOptional = Optional.ofNullable(stockingStufferRepository.findByName(stockingStufferObject.getName()));
+
+        if (stockingStufferOptional.isEmpty()) {
+            stockingStufferRepository.save(stockingStufferObject);
+            return stockingStufferObject;
+        } else {
+            throw new InformationExistException("stocking stuffer with name " + stockingStufferObject.getName() + " already exists");
         }
     }
 
