@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +57,7 @@ public class StockingStufferController {
         }
     }
 
-    @PostMapping(path="stockingstuffers")
+    @PostMapping(path="/stockingstuffers/")
     public ResponseEntity<?> createStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) {
         StockingStuffer newStockingStuffer = stockingStufferService.createStockingStuffer(stockingStufferObject);
 
@@ -70,6 +71,18 @@ public class StockingStufferController {
         }
     }
 
+    @PutMapping(path="/stockingstuffers/{stockingStufferId}/")
+    public ResponseEntity<?> updateStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) {
+        Optional<StockingStuffer> stockingStufferToUpdate = stockingStufferService.updateStockingStuffer(stockingStufferId, stockingStufferObject);
 
+        if (stockingStufferToUpdate.isPresent()) {
+            message.put("message", "success");
+            message.put("data", stockingStufferToUpdate);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "stocking stuffer with id " + stockingStufferId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

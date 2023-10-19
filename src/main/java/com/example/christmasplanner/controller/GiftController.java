@@ -76,7 +76,10 @@ public class GiftController {
         if (giftToUpdate.isPresent()) {
             message.put("message", "success");
             message.put("data", giftToUpdate);
-            return new ResponseEntity<>(message, "gift with id " + giftId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "gift with id " + giftId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
 
