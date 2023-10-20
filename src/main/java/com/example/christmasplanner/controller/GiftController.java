@@ -116,7 +116,12 @@ public class GiftController {
     }
 
 
-
+    /**
+     * This sets the path for DELETE requests for an existing gift and checks if the gift exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param giftId represents the id of the gift the user is trying to delete
+     * @return the HTTP status message
+     */
     @DeleteMapping("/gifts/{giftId}/")
     public ResponseEntity<?> deleteGift(@PathVariable(value="giftId") Long giftId) {
         Optional<Gift> giftToDelete = giftService.deleteGift(giftId);
