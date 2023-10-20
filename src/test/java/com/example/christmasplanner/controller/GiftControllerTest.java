@@ -40,6 +40,12 @@ public class GiftControllerTest {
     Gift GIFT_3 = new Gift(1L, "Homemade Potpourri Sachets", "Mix dried citrus slices, cinnamon sticks, cloves, and pinecones to create fragrant potpourri sachets. Bundle them in decorative fabric.");
 
 
+    /**
+     * This test says that when we call giftService.getAllGifts(), then to return all gifts.
+     * Use mockMvc to perform a GET request to the endpoint ("/api/gifts/"), set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the 'data' key of the payload to have a size of 2. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if list of gifts not found
+     */
     @Test
     public void getAllGiftRecords_success() throws Exception {
         List<Gift> giftList = new ArrayList<>(Arrays.asList(GIFT_1, GIFT_2, GIFT_3));
