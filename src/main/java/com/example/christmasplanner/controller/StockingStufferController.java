@@ -30,6 +30,11 @@ public class StockingStufferController {
     }
 
 
+    /**
+     * This sets the path for GET requests for all stocking stuffers and checks if the list of stuffers is empty or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @return the HTTP status message
+     */
     @GetMapping(path="/stockingstuffers/")
     public ResponseEntity<?> getAllStockingStuffers() {
 
