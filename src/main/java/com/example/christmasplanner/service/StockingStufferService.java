@@ -22,9 +22,16 @@ public class StockingStufferService {
     }
 
 
+    /**
+     * This is a GET request that checks to see if the list of stocking stuffers is empty before either throwing an InformationNotFoundException, or  returning the list of stocking stuffers
+     *
+     * @return a list of all stocking stuffers
+     */
     public List<StockingStuffer> getAllStockingStuffers() {
         return stockingStufferRepository.findAll();
     }
+
+
 
     public Optional<StockingStuffer> getStockingStufferById(Long stockingStufferId) {
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
