@@ -49,6 +49,13 @@ public class DecorationController {
         }
     }
 
+
+    /**
+     * This sets the path for GET requests for an individual decoration and checks if the decoration exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param decorationId represents the id of the specific decoration the user is trying to get
+     * @return the HTTP status message
+     */
     @GetMapping(path="/decorations/{decorationId}/")
     public ResponseEntity<?> getDecorationById(@PathVariable(value="decorationId") Long decorationId) {
 
