@@ -69,7 +69,7 @@ public class DecorationController {
             message.put("data", newDecoration);
             return new ResponseEntity<>(message, HttpStatus.CREATED);
         } else {
-            message.put("message", "unable to create a decoration at this time");
+            message.put("message", "decoration with name " + newDecoration.getName() + " already exists");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         }
     }
@@ -81,7 +81,22 @@ public class DecorationController {
 
         if (decorationToUpdate.isPresent()) {
             message.put("message", "success");
-            message.put("data", decorationToUpdate);
+            message.put("data", decorationToUpdate.get());
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "decoration with id " + decorationId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping(path="/decorations/{decorationId}/")
+    public ResponseEntity<?> deleteDecoration(@PathVariable(value="decorationId") Long decorationId) {
+
+        Optional<Decoration> decorationToDelete = decorationService.deleteDecoration(decorationId);
+
+        if (decorationToDelete.isPresent()) {
+            message.put("message", "success");
+            message.put("data", decorationToDelete);
             return new ResponseEntity<>(message, HttpStatus.OK);
         } else {
             message.put("message", "decoration with id " + decorationId + " not found");

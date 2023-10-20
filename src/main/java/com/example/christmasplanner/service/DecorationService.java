@@ -61,4 +61,15 @@ public class DecorationService {
         }
     }
 
+    public Optional<Decoration> deleteDecoration(Long decorationId) {
+        Optional<Decoration> decorationOptional = decorationRepository.findById(decorationId);
+
+        if (decorationOptional.isPresent()) {
+            decorationRepository.deleteById(decorationId);
+            return decorationOptional;
+        } else {
+            throw new InformationNotFoundException("decoration with id " + decorationId + " not found");
+        }
+    }
+
 }

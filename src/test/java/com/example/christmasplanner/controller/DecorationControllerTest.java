@@ -35,11 +35,11 @@ public class DecorationControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    Decoration DECORATION_1 = new Decoration(1L, "Gingerbread House Village", "Gingerbread cookies, royal icing, candies, small figurines", "Create a charming gingerbread house village as a centerpiece on your kitchen counter or dining table. Decorate gingerbread houses and arrange them alongside small figurines to complete the village look.");
+    Decoration DECORATION_1 = new Decoration(1L, "Gingerbread House Village", "Gingerbread cookies, royal icing, candies, small figurines", "Decorate gingerbread houses and arrange them alongside small figurines to complete the village look.");
 
     Decoration DECORATION_2 = new Decoration(2L, "Candy Cane Wreath", "Red and white candy canes, ribbon", "Craft a wreath by securing red and white candy canes in a circular shape using ribbon. Hang it on your door or wall for a sweet and simple decoration.");
 
-    Decoration DECORATION_3 = new Decoration(3L, "Floating Candle Centerpiece", "Clear glass vases or bowls, water, floating candles, holly leaves, cranberries", "Fill clear glass vases or bowls with water, add floating candles, and garnish with holly leaves and cranberries for a beautiful and elegant centerpiece.");
+    Decoration DECORATION_3 = new Decoration(3L, "Floating Candle Centerpiece", "Clear glass vases or bowls, water, floating candles, holly leaves, cranberries", "Fill clear glass vases or bowls with water, add floating candles, and garnish with holly leaves and cranberries.");
 
 
     /**
@@ -98,7 +98,7 @@ public class DecorationControllerTest {
 
         when(decorationService.createDecoration(Mockito.any(Decoration.class))).thenReturn(DECORATION_1);
 
-        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/decorations")
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/decorations/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(this.objectMapper.writeValueAsString(DECORATION_1));
@@ -137,6 +137,36 @@ public class DecorationControllerTest {
                 .andDo(print());
     }
 
+    /**
+     * This test says that when we call decorationService.updateDecoration() in successful instances where the decoration is found, to create a mock of any decoration, then return the updated decoration if it exists.
+     * Create a mock request and set it equal to calling a PUT request to the endpoint and uri variable ("/api/decorations/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON'. Accept the content and convert it from Java to JSON, then write the value of the decoration object as a string.
+     * Perform the mock request and expect the response status to be ok. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. And expect the jsonPath of the 'message' key of the payload to have a value of 'decoration with id 1 has been successfully updated'. Then print the message.
+     *
+     * @throws Exception if decoration not found
+     */
+    @Test
+    public void updateDecorationRecord_success() throws Exception {
 
+        Long decorationId = 1L;
+        Decoration decoration = new Decoration(decorationId, "original name", "original materials", "original description");
+        Decoration updatedDecoration = new Decoration(decorationId, "updated name", "updated materials", "updated description");
+
+        when(decorationService.updateDecoration(anyLong(), Mockito.any(Decoration.class))).thenReturn(Optional.of(updatedDecoration));
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/api/decorations/{id}/", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(decoration));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.data.id").value(updatedDecoration.getId()))
+                .andExpect(jsonPath("$.data.name").value(updatedDecoration.getName()))
+                .andExpect(jsonPath("$.data.materials").value(updatedDecoration.getMaterials()))
+                .andExpect(jsonPath("$.data.directions").value(updatedDecoration.getDirections()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
 
 }
