@@ -67,7 +67,13 @@ public class StockingStufferService {
     }
 
 
-
+    /**
+     * This is a PUT request that checks to see if a stocking stuffer exists before either throwing an InformationNotFoundException, or setting the attributes and saving the newly updated stocking stuffer to the repository
+     *
+     * @param stockingStufferId represents the id of the stocking stuffer the user is trying to update
+     * @param stockingStufferObject represents the updated version of the stocking stuffer
+     * @return the newly updated stocking stuffer
+     */
     public Optional<StockingStuffer> updateStockingStuffer(Long stockingStufferId, StockingStuffer stockingStufferObject) {
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
 
@@ -80,6 +86,8 @@ public class StockingStufferService {
             throw new InformationNotFoundException("stocking stuffer with id " + stockingStufferId + " not found");
         }
     }
+
+
 
     public Optional<StockingStuffer> deleteStockingStuffer(Long stockingStufferId) {
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
