@@ -94,7 +94,13 @@ public class DecorationController {
     }
 
 
-
+    /**
+     * This sets the path for PUT requests for an existing decoration and checks if the decoration exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param decorationId represents the id of the decoration the user is trying to update
+     * @param decorationObject represents the updated version of the decoration
+     * @return the HTTP status message
+     */
     @PutMapping(path="/decorations/{decorationId}/")
     public ResponseEntity<?> updateDecoration(@PathVariable(value="decorationId") Long decorationId, @RequestBody Decoration decorationObject) throws InformationNotFoundException {
 
