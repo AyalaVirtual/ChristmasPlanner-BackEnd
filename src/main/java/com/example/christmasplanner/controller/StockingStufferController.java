@@ -61,14 +61,14 @@ public class StockingStufferController {
     }
 
     @PostMapping(path="/stockingstuffers/")
-    public ResponseEntity<?> createStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) {
+    public ResponseEntity<?> createStockingStuffer(@RequestBody StockingStuffer stockingStufferObject) {
 
         StockingStuffer newStockingStuffer = stockingStufferService.createStockingStuffer(stockingStufferObject);
 
         if (newStockingStuffer != null) {
             message.put("message", "success");
             message.put("data", newStockingStuffer);
-            return new ResponseEntity<>(message, HttpStatus.OK);
+            return new ResponseEntity<>(message, HttpStatus.CREATED);
         } else {
             message.put("message", "stocking stuffer with name " + stockingStufferObject.getName() + " already exists");
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);

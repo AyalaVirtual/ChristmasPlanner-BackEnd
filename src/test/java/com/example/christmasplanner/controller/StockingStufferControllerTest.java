@@ -77,7 +77,7 @@ public class StockingStufferControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id").value(STOCKING_STUFFER_1.getId()))
                 .andExpect(jsonPath("$.data.name").value(STOCKING_STUFFER_1.getName()))
-                .andExpect(jsonPath("$.data.description").value(STOCKING_STUFFER_1))
+                .andExpect(jsonPath("$.data.description").value(STOCKING_STUFFER_1.getDescription()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
