@@ -22,6 +22,11 @@ public class DecorationService {
     }
 
 
+    /**
+     * This is a GET request that checks to see if the list of decorations is empty before either throwing an InformationNotFoundException, or  returning the list of decorations
+     *
+     * @return a list of all decorations
+     */
     public List<Decoration> getAllDecorations() {
         return decorationRepository.findAll();
     }

@@ -9,8 +9,9 @@ import java.util.Optional;
 
 @Repository
 public interface DecorationRepository extends JpaRepository<Decoration, Long> {
-
+    // This method finds a decoration by its id
     Optional<Decoration> findById(Long decorationId);
 
+    // This method finds a decoration by its name
     Decoration findByName(String decorationName);
 }

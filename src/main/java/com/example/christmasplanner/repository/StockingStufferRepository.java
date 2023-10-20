@@ -8,8 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface StockingStufferRepository extends JpaRepository<StockingStuffer, Long> {
-
+    // This method finds a stocking stuffer by its id
     Optional<StockingStuffer> findById(Long stockingStufferId);
 
+    // This method finds a stocking stuffer by its name
     StockingStuffer findByName(String stockingStufferName);
 }

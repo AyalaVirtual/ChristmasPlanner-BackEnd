@@ -8,8 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface GiftRepository extends JpaRepository<Gift, Long> {
-
+    // This method finds a gift by its id
     Optional<Gift> findById(Long giftId);
 
+    // This method finds a gift by its name
     Gift findByName(String giftName);
 }
