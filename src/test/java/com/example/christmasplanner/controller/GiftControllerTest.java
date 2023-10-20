@@ -4,23 +4,23 @@ import com.example.christmasplanner.model.Gift;
 import com.example.christmasplanner.service.GiftService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.anyLong;
 
 
 @WebMvcTest(GiftController.class)
@@ -49,6 +49,7 @@ public class GiftControllerTest {
      */
     @Test
     public void getAllGiftRecords_success() throws Exception {
+
         List<Gift> giftList = new ArrayList<>(Arrays.asList(GIFT_1, GIFT_2, GIFT_3));
 
         when(giftService.getAllGifts()).thenReturn(giftList);
@@ -69,11 +70,40 @@ public class GiftControllerTest {
      */
     @Test
     public void getGiftRecord_success() throws Exception {
+
         when(giftService.getGiftById(GIFT_1.getId())).thenReturn(Optional.of(GIFT_1));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/gifts/{id}/", "1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.id").value(GIFT_1.getId()))
+                .andExpect(jsonPath("$.data.name").value(GIFT_1.getName()))
+                .andExpect(jsonPath("$.data.description").value(GIFT_1.getDescription()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
+    /**
+     *
+     * This test says that when we call giftService.createGift(), create a mock of any gift, then return the gift.
+     * Create a mock request and set it equal to calling a POST request to the endpoint ("/api/gifts/"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Accept the content and convert it from Java to JSON, then write the value of the gift's record as a string.
+     * Perform the mock request and expect the response status to be isCreated. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if gift already exists
+     */
+    @Test
+    public void createGiftRecord_success() throws Exception {
+
+        when(giftService.createGift(Mockito.any(Gift.class))).thenReturn(GIFT_1);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/gifts/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(GIFT_1));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$", notNullValue))
                 .andExpect(jsonPath("$.data.id").value(GIFT_1.getId()))
                 .andExpect(jsonPath("$.data.name").value(GIFT_1.getName()))
                 .andExpect(jsonPath("$.data.description").value(GIFT_1.getDescription()))
