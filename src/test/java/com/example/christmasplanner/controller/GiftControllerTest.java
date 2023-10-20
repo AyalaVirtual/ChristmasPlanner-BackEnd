@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.mockito.Mockito.when;
@@ -43,7 +45,7 @@ public class GiftControllerTest {
 
     /**
      * This test says that when we call giftService.getAllGifts(), then to return all gifts.
-     * Use mockMvc to perform a GET request to the endpoint ("/api/gifts/"), set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the 'data' key of the payload to have a size of 2. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     * Use mockMvc to perform a GET request to the endpoint ("/api/gifts/"), set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the 'data' key of the payload to have a size of 3. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
      *
      * @throws Exception if list of gifts not found
      */
@@ -57,7 +59,7 @@ public class GiftControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/gifts/")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data", hasSize(2)))
+                .andExpect(jsonPath("$.data", hasSize(3)))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -131,6 +133,36 @@ public class GiftControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$", notNullValue()))
                 .andExpect(jsonPath("$.message").value("gift with id 1 not found"))
+                .andDo(print());
+    }
+
+    /**
+     * This test says that when we call giftService.updateGift() in successful instances where the gift is found, to create a mock of any gift, then return the updated gift if it exists.
+     * Create a mock request and set it equal to calling a PUT request to the endpoint and uri variable ("/api/gifts/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON'. Accept the content and convert it from Java to JSON, then write the value of the gift object as a string.
+     * Perform the mock request and expect the response status to be ok. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. And expect the jsonPath of the 'message' key of the payload to have a value of 'gift with id 1 has been successfully updated'. Then print the message.
+     *
+     * @throws Exception if gift not found
+     */
+    @Test
+    public void updateGiftRecord_success() throws Exception {
+        Long giftId = 1L;
+        Gift gift = new Gift(giftId, "Original name", "Original desciption");
+        Gift updatedGift = new Gift(giftId, "Updated name", "Updated description");
+
+        when(giftService.updateGift(anyLong(), Mockito.any(Gift.class))).thenReturn(Optional.of(updatedGift));
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/api/gifts/{id}/", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(gift));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.data.id").value(updatedGift.getId()))
+                .andExpect(jsonPath("$.data.name").value(updatedGift.getName()))
+                .andExpect(jsonPath("$.data.description").value(updatedGift.getDescription()))
+                .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
 
