@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
@@ -60,9 +61,24 @@ public class GiftControllerTest {
                 .andDo(print());
     }
 
+    /**
+     * This test says that when we call giftService.getGiftById(), then to return the gift if it exists.
+     * Perform a GET request to the endpoint and uri variable ("/api/gifts/{id}/", "1"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if gift not found
+     */
     @Test
     public void getGiftRecord_success() throws Exception {
-        when(giftService.getGiftById(GIFT_1.getId()))
+        when(giftService.getGiftById(GIFT_1.getId())).thenReturn(Optional.of(GIFT_1));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/gifts/{id}/", "1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.id").value(GIFT_1.getId()))
+                .andExpect(jsonPath("$.data.name").value(GIFT_1.getName()))
+                .andExpect(jsonPath("$.data.description").value(GIFT_1.getDescription()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
     }
 
 }
