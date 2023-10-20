@@ -65,6 +65,14 @@ public class DecorationService {
         }
     }
 
+
+    /**
+     * This is a PUT request that checks to see if a decoration exists before either throwing an InformationNotFoundException, or setting the attributes and saving the newly updated decoration to the repository
+     *
+     * @param decorationId represents the id of the decoration the user is trying to update
+     * @param decorationObject represents the updated version of the decoration
+     * @return the newly updated decoration
+     */
     public Optional<Decoration> updateDecoration(Long decorationId, Decoration decorationObject) {
 
         Optional<Decoration> decorationOptional = decorationRepository.findById(decorationId);
