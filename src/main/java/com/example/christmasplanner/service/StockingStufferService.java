@@ -88,7 +88,12 @@ public class StockingStufferService {
     }
 
 
-
+    /**
+     * This is a DELETE request that checks to see if an individual stocking stuffer exists before either deleting it, or throwing an InformationNotFoundException
+     *
+     * @param stockingStufferId represents the id of the stocking stuffer the user is trying to delete
+     * @return the deleted stocking stuffer
+     */
     public Optional<StockingStuffer> deleteStockingStuffer(Long stockingStufferId) {
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
 
