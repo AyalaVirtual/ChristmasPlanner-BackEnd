@@ -109,4 +109,27 @@ public class StockingStufferControllerTest {
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
+
+    /**
+     * This test says that when we call stockingStufferService.updateStockingStuffer() in instances where the stocking stuffer is not found, to create a mock of any stocking stuffer and then return an empty optional.
+     * Create a mock request and set it equal to calling a DELETE request to the endpoint and uri variable ("/api/stockingstuffers/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON', and accept it.
+     * Perform the mock request and expect the response status to be not found. Expect the jsonPath of the payload and a not null value. And expect the jsonPath of the 'message' key of the payload to have a value of 'cannot find stocking stuffer with id 1'. Then print the message.
+     *
+     * @throws Exception if stocking stuffer not found
+     */
+    @Test
+    public void updateStockingStufferRecord_recordNotFound() throws Exception {
+
+        when(stockingStufferService.updateStockingStuffer(anyLong(), Mockito.any(StockingStuffer.class))).thenReturn(Optional.empty());
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.delete("/api/stockingstuffers/{id}/", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.message").value("stocking stuffer with id 1 not found"))
+                .andDo(print());
+    }
 }
