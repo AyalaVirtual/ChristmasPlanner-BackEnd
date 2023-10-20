@@ -22,9 +22,16 @@ public class GiftService {
     }
 
 
+    /**
+     * This is a GET request that checks to see if the list of gifts is empty before either throwing an InformationNotFoundException, or  returning the list of gifts
+     *
+     * @return a list of all gifts
+     */
     public List<Gift> getAllGifts() {
         return giftRepository.findAll();
     }
+
+
 
     public Optional<Gift> getGiftById(Long giftId) {
         Optional<Gift> giftOptional = giftRepository.findById(giftId);
