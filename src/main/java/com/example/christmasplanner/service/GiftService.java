@@ -32,7 +32,12 @@ public class GiftService {
     }
 
 
-
+    /**
+     * This is a GET request that checks to see if an individual gift exists before either returning it, or throwing an InformationNotFoundException
+     *
+     * @param giftId represents the id of the specific gift the user is trying to get
+     * @return gift by id if it exists
+     */
     public Optional<Gift> getGiftById(Long giftId) {
         Optional<Gift> giftOptional = giftRepository.findById(giftId);
 
@@ -42,6 +47,8 @@ public class GiftService {
             throw new InformationNotFoundException("gift with id " + giftId + " not found");
         }
     }
+
+
 
     public Gift createGift(Gift giftObject) {
         Gift gift = giftRepository.findByName(giftObject.getName());
