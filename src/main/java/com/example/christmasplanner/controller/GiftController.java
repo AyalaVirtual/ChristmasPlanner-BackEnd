@@ -88,4 +88,18 @@ public class GiftController {
         }
     }
 
+    @DeleteMapping("/gifts/{giftId}/")
+    public ResponseEntity<?> deleteGift(@PathVariable(value="giftId") Long giftId) {
+        Optional<Gift> giftToDelete = giftService.deleteGift(giftId);
+
+        if (giftToDelete.isPresent()) {
+            message.put("message", "success");
+            message.put("data", giftToDelete);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "gift with id " + giftId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
