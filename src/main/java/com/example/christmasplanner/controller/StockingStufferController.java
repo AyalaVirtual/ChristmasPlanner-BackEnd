@@ -90,6 +90,19 @@ public class StockingStufferController {
         }
     }
 
+    @DeleteMapping(path="/stockingstuffers/{stockingStufferId}/")
+    public ResponseEntity<?> deleteStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId) {
 
+        Optional<StockingStuffer> stockingStufferToDelete = stockingStufferService.deleteStockingStuffer(stockingStufferId);
+
+        if (stockingStufferToDelete.isPresent()) {
+            message.put("message", "success");
+            message.put("data", stockingStufferToDelete);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            message.put("message", "stocking stuffer with id " + stockingStufferId + " not found");
+            return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
