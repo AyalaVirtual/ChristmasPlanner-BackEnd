@@ -73,8 +73,12 @@ public class StockingStufferController {
     }
 
 
-
-    // stocking stuffer
+    /**
+     * This sets the path for POST requests for a new stocking stuffer and checks if the stocking stuffer exists or not before deciding whether to send an HTTP status message of CREATED or CONFLICT
+     *
+     * @param stockingStufferObject represents the new stocking stuffer the user is trying to create
+     * @return the HTTP status message
+     */
     @PostMapping(path="/stockingstuffers/")
     public ResponseEntity<?> createStockingStuffer(@RequestBody StockingStuffer stockingStufferObject) {
 
