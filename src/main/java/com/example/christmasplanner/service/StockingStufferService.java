@@ -48,6 +48,13 @@ public class StockingStufferService {
         }
     }
 
+
+    /**
+     * This is a POST request that checks to see if a stocking stuffer already exists before either throwing an InformationExistException, or saving the newly created stocking stuffer to the repository
+     *
+     * @param stockingStufferObject represents the new stocking stuffer the user is trying to create
+     * @return newly created stocking stuffer
+     */
     public StockingStuffer createStockingStuffer(StockingStuffer stockingStufferObject) {
         StockingStuffer stockingStuffer = stockingStufferRepository.findByName(stockingStufferObject.getName());
 
@@ -58,6 +65,8 @@ public class StockingStufferService {
             return stockingStufferObject;
         }
     }
+
+
 
     public Optional<StockingStuffer> updateStockingStuffer(Long stockingStufferId, StockingStuffer stockingStufferObject) {
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
