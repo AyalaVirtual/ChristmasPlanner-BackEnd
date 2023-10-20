@@ -88,6 +88,13 @@ public class DecorationService {
         }
     }
 
+
+    /**
+     * This is a DELETE request that checks to see if an individual decoration exists before either deleting it, or throwing an InformationNotFoundException
+     *
+     * @param decorationId represents the id of the decoration the user is trying to delete
+     * @return the deleted decoration
+     */
     public Optional<Decoration> deleteDecoration(Long decorationId) {
         Optional<Decoration> decorationOptional = decorationRepository.findById(decorationId);
 
