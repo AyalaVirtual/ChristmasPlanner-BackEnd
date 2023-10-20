@@ -82,5 +82,31 @@ public class StockingStufferControllerTest {
                 .andDo(print());
     }
 
+    /**
+     *
+     * This test says that when we call stockingStufferService.createStockingStuffer(), create a mock of any stocking stuffer, then return the stocking stuffer.
+     * Create a mock request and set it equal to calling a POST request to the endpoint ("/api/stockingstuffers/"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Accept the content and convert it from Java to JSON, then write the value of the stocking stuffer's record as a string.
+     * Perform the mock request and expect the response status to be isCreated. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if stocking stuffer already exists
+     */
+    @Test
+    public void createStockingStufferRecord_success() throws Exception {
 
+        when(stockingStufferService.createStockingStuffer(Mockito.any(StockingStuffer.class))).thenReturn(STOCKING_STUFFER_1);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/stockingstuffers/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(STOCKING_STUFFER_1));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.data.id").value(STOCKING_STUFFER_1.getId()))
+                .andExpect(jsonPath("$.data.name").value(STOCKING_STUFFER_1.getName()))
+                .andExpect(jsonPath("$.data.description").value(STOCKING_STUFFER_1.getDescription()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
 }
