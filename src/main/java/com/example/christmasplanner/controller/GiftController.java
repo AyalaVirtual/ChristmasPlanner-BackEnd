@@ -93,7 +93,13 @@ public class GiftController {
     }
 
 
-
+    /**
+     * This sets the path for PUT requests for an existing gift and checks if the gift exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param giftId represents the id of the gift the user is trying to update
+     * @param giftObject represents the updated version of the gift
+     * @return the HTTP status message
+     */
     @PutMapping(path="/gifts/{giftId}/")
     public ResponseEntity<?> updateGift(@PathVariable(value="giftId") Long giftId, @RequestBody Gift giftObject) throws InformationNotFoundException {
 
