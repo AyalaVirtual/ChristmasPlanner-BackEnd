@@ -71,6 +71,13 @@ public class DecorationController {
         }
     }
 
+
+    /**
+     * This sets the path for POST requests for a new decoration and checks if the decoration exists or not before deciding whether to send an HTTP status message of CREATED or CONFLICT
+     *
+     * @param decorationObject represents the new decoration the user is trying to create
+     * @return the HTTP status message
+     */
     @PostMapping(path="/decorations/")
     public ResponseEntity<?> createDecoration(@RequestBody Decoration decorationObject)  {
 
@@ -86,6 +93,8 @@ public class DecorationController {
         }
     }
 
+
+
     @PutMapping(path="/decorations/{decorationId}/")
     public ResponseEntity<?> updateDecoration(@PathVariable(value="decorationId") Long decorationId, @RequestBody Decoration decorationObject) throws InformationNotFoundException {
 
@@ -100,6 +109,8 @@ public class DecorationController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
+
 
     @DeleteMapping(path="/decorations/{decorationId}/")
     public ResponseEntity<?> deleteDecoration(@PathVariable(value="decorationId") Long decorationId) {
