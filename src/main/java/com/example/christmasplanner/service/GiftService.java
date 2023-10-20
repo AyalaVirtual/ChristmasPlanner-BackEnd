@@ -60,4 +60,15 @@ public class GiftService {
         }
     }
 
+    public Optional<Gift> deleteGift(Long giftId) {
+        Optional<Gift> giftOptional = giftRepository.findById(giftId);
+
+        if (giftOptional.isPresent()) {
+            giftRepository.deleteById(giftId);
+            return giftOptional;
+        } else {
+            throw new InformationNotFoundException("gift with id " + giftId + " not found");
+        }
+    }
+
 }
