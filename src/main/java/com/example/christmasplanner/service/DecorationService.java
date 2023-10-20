@@ -31,6 +31,13 @@ public class DecorationService {
         return decorationRepository.findAll();
     }
 
+
+    /**
+     * This is a GET request that checks to see if an individual decoration exists before either returning it, or throwing an InformationNotFoundException
+     *
+     * @param decorationId represents the id of the specific decoration the user is trying to get
+     * @return decoration by id if it exists
+     */
     public Optional<Decoration> getDecorationById(Long decorationId) {
         Optional<Decoration> decorationOptional = decorationRepository.findById(decorationId);
 
