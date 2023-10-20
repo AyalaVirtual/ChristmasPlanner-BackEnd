@@ -61,5 +61,26 @@ public class StockingStufferControllerTest {
                 .andDo(print());
     }
 
+    /**
+     * This test says that when we call stockingStufferService.getAuthorById(), then to return the stocking stuffer if it exists.
+     * Perform a GET request to the endpoint and uri variable ("/api/stockingstuffers/{id}/", "1"), then set the content type you're expecting, which is MediaType.APPLICATION_JSON. Expect the response status to be ok. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. Expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if stocking stuffer not found
+     */
+    @Test
+    public void getStockingStufferRecord_success() throws Exception {
+
+        when(stockingStufferService.getStockingStufferById(STOCKING_STUFFER_1.getId())).thenReturn(Optional.of(STOCKING_STUFFER_1));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/stockingstuffers/{id}/", "1")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.id").value(STOCKING_STUFFER_1.getId()))
+                .andExpect(jsonPath("$.data.name").value(STOCKING_STUFFER_1.getName()))
+                .andExpect(jsonPath("$.data.description").value(STOCKING_STUFFER_1))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
 
 }
