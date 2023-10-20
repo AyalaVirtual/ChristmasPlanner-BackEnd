@@ -103,11 +103,34 @@ public class GiftControllerTest {
 
         mockMvc.perform(mockRequest)
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$", notNullValue))
+                .andExpect(jsonPath("$", notNullValue()))
                 .andExpect(jsonPath("$.data.id").value(GIFT_1.getId()))
                 .andExpect(jsonPath("$.data.name").value(GIFT_1.getName()))
                 .andExpect(jsonPath("$.data.description").value(GIFT_1.getDescription()))
                 .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
+    /**
+     * This test says that when we call giftService.updateGift() in instances where the gift is not found, to create a mock of any gift and then return an empty optional.
+     * Create a mock request and set it equal to calling a DELETE request to the endpoint and uri variable ("/api/gifts/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON', and accept it.
+     * Perform the mock request and expect the response status to be not found. Expect the jsonPath of the payload and a not null value. And expect the jsonPath of the 'message' key of the payload to have a value of 'cannot find gift with id 1'. Then print the message.
+     *
+     * @throws Exception if gift not found
+     */
+    @Test
+    public void updateGiftRecord_recordNotFound() throws Exception {
+
+        when(giftService.updateGift(anyLong(), Mockito.any(Gift.class))).thenReturn(Optional.empty());
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.delete("/api/gifts/{giftId}/", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.message").value("gift with id 1 not found"))
                 .andDo(print());
     }
 
