@@ -60,4 +60,15 @@ public class StockingStufferService {
         }
     }
 
+    public Optional<StockingStuffer> deleteStockingStuffer(Long stockingStufferId) {
+        Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
+
+        if (stockingStufferOptional.isPresent()) {
+            stockingStufferRepository.deleteById(stockingStufferId);
+            return stockingStufferOptional;
+        } else {
+            throw new InformationNotFoundException("stocking stuffer with id " + stockingStufferId + " not found");
+        }
+    }
+
 }
