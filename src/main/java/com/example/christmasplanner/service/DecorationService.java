@@ -48,6 +48,13 @@ public class DecorationService {
         }
     }
 
+
+    /**
+     * This is a POST request that checks to see if a decoration already exists before either throwing an InformationExistException, or saving the newly created decoration to the repository
+     *
+     * @param decorationObject represents the new decoration the user is trying to create
+     * @return newly created decoration
+     */
     public Decoration createDecoration(Decoration decorationObject) {
         Decoration decoration = decorationRepository.findByName(decorationObject.getName());
 
