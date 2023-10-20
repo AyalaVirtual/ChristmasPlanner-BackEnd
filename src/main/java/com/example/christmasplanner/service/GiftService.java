@@ -67,7 +67,13 @@ public class GiftService {
     }
 
 
-
+    /**
+     * This is a PUT request that checks to see if a gift exists before either throwing an InformationNotFoundException, or setting the attributes and saving the newly updated gift to the repository
+     *
+     * @param giftId represents the id of the gift the user is trying to update
+     * @param giftObject represents the updated version of the gift
+     * @return the newly updated gift
+     */
     public Optional<Gift> updateGift(Long giftId, Gift giftObject) {
         Optional<Gift> giftOptional = giftRepository.findById(giftId);
 
@@ -80,6 +86,8 @@ public class GiftService {
             throw new InformationNotFoundException("gift with id " + giftId + " not found");
         }
     }
+
+
 
     public Optional<Gift> deleteGift(Long giftId) {
         Optional<Gift> giftOptional = giftRepository.findById(giftId);
