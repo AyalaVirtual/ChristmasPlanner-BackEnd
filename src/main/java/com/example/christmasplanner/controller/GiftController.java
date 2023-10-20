@@ -71,7 +71,12 @@ public class GiftController {
     }
 
 
-
+    /**
+     * This sets the path for POST requests for a new gift and checks if the author exists or not before deciding whether to send an HTTP status message of CREATED or CONFLICT
+     *
+     * @param giftObject represents the new gift the user is trying to create
+     * @return the HTTP status message
+     */
     @PostMapping(path="/gifts/")
     public ResponseEntity<?> createGift(@RequestBody Gift giftObject) {
 
@@ -87,6 +92,8 @@ public class GiftController {
         }
     }
 
+
+
     @PutMapping(path="/gifts/{giftId}/")
     public ResponseEntity<?> updateGift(@PathVariable(value="giftId") Long giftId, @RequestBody Gift giftObject) throws InformationNotFoundException {
 
@@ -101,6 +108,8 @@ public class GiftController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
+
 
     @DeleteMapping("/gifts/{giftId}/")
     public ResponseEntity<?> deleteGift(@PathVariable(value="giftId") Long giftId) {
