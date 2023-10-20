@@ -29,6 +29,11 @@ public class DecorationController {
     }
 
 
+    /**
+     * This sets the path for GET requests for all decorations and checks if the list of decorations is empty or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @return the HTTP status message
+     */
     @GetMapping(path="/decorations/")
     public ResponseEntity<?> getAllDecorations() {
 
