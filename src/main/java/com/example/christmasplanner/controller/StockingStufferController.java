@@ -50,6 +50,13 @@ public class StockingStufferController {
         }
     }
 
+
+    /**
+     * This sets the path for GET requests for an individual stocking stuffer and checks if the stocking stuffer exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param stockingStufferId represents the id of the specific stocking stuffer the user is trying to get
+     * @return the HTTP status message
+     */
     @GetMapping(path="/stockingstuffers/{stockingStufferId}/")
     public ResponseEntity<?> getStockingStufferById(@PathVariable(value="stockingStufferId") Long stockingStufferId) {
 
@@ -65,6 +72,9 @@ public class StockingStufferController {
         }
     }
 
+
+
+    // stocking stuffer
     @PostMapping(path="/stockingstuffers/")
     public ResponseEntity<?> createStockingStuffer(@RequestBody StockingStuffer stockingStufferObject) {
 
@@ -80,6 +90,9 @@ public class StockingStufferController {
         }
     }
 
+
+
+    // stocking stuffer
     @PutMapping(path="/stockingstuffers/{stockingStufferId}/")
     public ResponseEntity<?> updateStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) throws InformationNotFoundException {
 
@@ -95,6 +108,9 @@ public class StockingStufferController {
         }
     }
 
+
+
+    // stocking stuffer
     @DeleteMapping(path="/stockingstuffers/{stockingStufferId}/")
     public ResponseEntity<?> deleteStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId) {
 
