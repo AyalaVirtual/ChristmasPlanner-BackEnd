@@ -48,6 +48,13 @@ public class GiftController {
         }
     }
 
+
+    /**
+     * This sets the path for GET requests for an individual gift and checks if the gift exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param giftId represents the id of the specific gift the user is trying to get
+     * @return the HTTP status message
+     */
     @GetMapping(path="/gifts/{giftId}/")
     public ResponseEntity<?> getGiftById(@PathVariable(value="giftId") Long giftId) {
 
@@ -62,6 +69,8 @@ public class GiftController {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }
     }
+
+
 
     @PostMapping(path="/gifts/")
     public ResponseEntity<?> createGift(@RequestBody Gift giftObject) {
