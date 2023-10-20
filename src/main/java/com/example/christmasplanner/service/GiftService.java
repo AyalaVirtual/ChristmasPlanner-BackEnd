@@ -88,7 +88,12 @@ public class GiftService {
     }
 
 
-
+     /**
+     * This is a DELETE request that checks to see if an individual gift exists before either deleting it, or throwing an InformationNotFoundException
+     *
+     * @param giftId represents the id of the gift the user is trying to delete
+     * @return the deleted gift
+     */
     public Optional<Gift> deleteGift(Long giftId) {
         Optional<Gift> giftOptional = giftRepository.findById(giftId);
 
