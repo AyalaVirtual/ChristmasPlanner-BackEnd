@@ -32,7 +32,12 @@ public class StockingStufferService {
     }
 
 
-
+    /**
+     * This is a GET request that checks to see if an individual stocking stuffer exists before either returning it, or throwing an InformationNotFoundException
+     *
+     * @param stockingStufferId represents the id of the specific stocking stuffer the user is trying to get
+     * @return stocking stuffer by id if it exists
+     */
     public Optional<StockingStuffer> getStockingStufferById(Long stockingStufferId) {
         Optional<StockingStuffer> stockingStufferOptional = stockingStufferRepository.findById(stockingStufferId);
 
