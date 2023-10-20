@@ -117,7 +117,12 @@ public class DecorationController {
     }
 
 
-
+    /**
+     * This sets the path for DELETE requests for an existing decoration and checks if the decoration exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param decorationId represents the id of the decoration the user is trying to delete
+     * @return the HTTP status message
+     */
     @DeleteMapping(path="/decorations/{decorationId}/")
     public ResponseEntity<?> deleteDecoration(@PathVariable(value="decorationId") Long decorationId) {
 
