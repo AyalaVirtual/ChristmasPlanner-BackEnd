@@ -118,8 +118,12 @@ public class StockingStufferController {
     }
 
 
-
-    // stocking stuffer
+    /**
+     * This sets the path for DELETE requests for an existing stocking stuffer and checks if the stocking stuffer exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param stockingStufferId represents the id of the stocking stuffer the user is trying to delete
+     * @return the HTTP status message
+     */
     @DeleteMapping(path="/stockingstuffers/{stockingStufferId}/")
     public ResponseEntity<?> deleteStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId) {
 
