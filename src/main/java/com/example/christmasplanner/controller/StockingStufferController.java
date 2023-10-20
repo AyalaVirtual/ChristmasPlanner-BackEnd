@@ -95,8 +95,13 @@ public class StockingStufferController {
     }
 
 
-
-    // stocking stuffer
+    /**
+     * This sets the path for PUT requests for an existing stocking stuffer and checks if the stocking stuffer exists or not before deciding whether to send an HTTP status message of OK or NOT FOUND
+     *
+     * @param stockingStufferId represents the id of the stocking stuffer the user is trying to update
+     * @param stockingStufferObject represents the updated version of the stocking stuffer
+     * @return the HTTP status message
+     */
     @PutMapping(path="/stockingstuffers/{stockingStufferId}/")
     public ResponseEntity<?> updateStockingStuffer(@PathVariable(value="stockingStufferId") Long stockingStufferId, @RequestBody StockingStuffer stockingStufferObject) throws InformationNotFoundException {
 
