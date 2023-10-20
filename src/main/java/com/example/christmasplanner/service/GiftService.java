@@ -49,7 +49,12 @@ public class GiftService {
     }
 
 
-
+    /**
+     * This is a POST request that checks to see if a gift already exists before either throwing an InformationExistException, or saving the newly created gift to the repository
+     *
+     * @param giftObject represents the new gift the user is trying to create
+     * @return newly created gift
+     */
     public Gift createGift(Gift giftObject) {
         Gift gift = giftRepository.findByName(giftObject.getName());
 
@@ -60,6 +65,8 @@ public class GiftService {
             return giftObject;
         }
     }
+
+
 
     public Optional<Gift> updateGift(Long giftId, Gift giftObject) {
         Optional<Gift> giftOptional = giftRepository.findById(giftId);
