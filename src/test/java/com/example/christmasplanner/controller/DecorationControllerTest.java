@@ -140,7 +140,7 @@ public class DecorationControllerTest {
     /**
      * This test says that when we call decorationService.updateDecoration() in successful instances where the decoration is found, to create a mock of any decoration, then return the updated decoration if it exists.
      * Create a mock request and set it equal to calling a PUT request to the endpoint and uri variable ("/api/decorations/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON'. Accept the content and convert it from Java to JSON, then write the value of the decoration object as a string.
-     * Perform the mock request and expect the response status to be ok. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. And expect the jsonPath of the 'message' key of the payload to have a value of 'decoration with id 1 has been successfully updated'. Then print the message.
+     * Perform the mock request and expect the response status to be ok. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. And expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
      *
      * @throws Exception if decoration not found
      */

@@ -132,4 +132,35 @@ public class StockingStufferControllerTest {
                 .andExpect(jsonPath("$.message").value("stocking stuffer with id 1 not found"))
                 .andDo(print());
     }
+
+    /**
+     * This test says that when we call stockingStufferService.updateStockingStuffer() in successful instances where the stocking stuffer is found, to create a mock of any stocking stuffer, then return the updated stocking stuffer if it exists.
+     * Create a mock request and set it equal to calling a PUT request to the endpoint and uri variable ("/api/stockingstuffers/{id}/", 1L). Then set the content type you're expecting, which is 'MediaType.APPLICATION_JSON'. Accept the content and convert it from Java to JSON, then write the value of the stocking stuffer object as a string.
+     * Perform the mock request and expect the response status to be ok. Expect the jsonPath of the payload and a not null value. Expect the jsonPath of the attributes in the payload to be equal to the value of the get method for that attribute. And expect the jsonPath of the 'message' key of the payload to have a value of 'success'. Then print the message.
+     *
+     * @throws Exception if  not stocking stuffer found
+     */
+    @Test
+    public void updateStockingStufferRecord_success() throws Exception {
+        Long stockingStufferId = 1L;
+        StockingStuffer stockingStuffer = new StockingStuffer(stockingStufferId, "Original name", "Original description");
+        StockingStuffer updatedStockingStuffer = new StockingStuffer(stockingStufferId, "Updated name", "Updated description");
+
+        when(stockingStufferService.updateStockingStuffer(anyLong(), Mockito.any(StockingStuffer.class))).thenReturn(Optional.of(updatedStockingStuffer));
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/api/stockingstuffers/{id}/", 1L)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(stockingStuffer));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.data.id").value(updatedStockingStuffer.getId()))
+                .andExpect(jsonPath("$.data.name").value(updatedStockingStuffer.getName()))
+                .andExpect(jsonPath("$.data.description").value(updatedStockingStuffer.getDescription()))
+                .andExpect(jsonPath("$.message").value("success"))
+                .andDo(print());
+    }
+
 }
