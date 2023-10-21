@@ -176,7 +176,7 @@ As a user I want to update/edit the details of a stocking stuffer idea, includin
 
 ## Major Hurdles
 
-The biggest hurdle was figuring out how to link the front-end (Angular) to the back-end (Java/Spring). 
+The only hurdles I had were a few small issues that I ran into during testing, which were caused by a few small mistakes in my service class. After going back over my code to locate and correct those errors, everything ran smoothly. I think my biggest hurdle will be figuring out how to link the front-end (Angular) to the back-end (Java/Spring). 
 
 
 
@@ -212,4 +212,3 @@ The biggest hurdle was figuring out how to link the front-end (Angular) to the b
 
 
 
-``
