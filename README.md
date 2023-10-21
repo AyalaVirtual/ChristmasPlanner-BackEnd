@@ -11,8 +11,7 @@ A RestAPI designed to allow users to find inspiration for DIY Christmas ornament
 * H2 Database
 * Postman
 * Apache Tomcat
-* MockMVC
-* REST-Assured / Cucumber 
+* MockMVC  
 * IntelliJ
 
 
