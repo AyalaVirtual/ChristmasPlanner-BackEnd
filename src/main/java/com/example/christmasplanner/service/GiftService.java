@@ -80,6 +80,7 @@ public class GiftService {
         if (giftOptional.isPresent()) {
             giftOptional.get().setName(giftObject.getName());
             giftOptional.get().setDescription(giftObject.getDescription());
+            giftOptional.get().setTag(giftObject.getTag());
             giftRepository.save(giftOptional.get());
             return giftOptional;
         } else {
