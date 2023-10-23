@@ -115,7 +115,7 @@ For the final step of the planning phase, I created an ERD (entity relationship 
 
 ## Entity Relationship Diagram
 
-<img src="./images/ChristmasPlannerERD.png" alt="ERD">
+<img src="./images/ERD.png" alt="ERD">
 
 
 
@@ -274,7 +274,7 @@ The only hurdles I had were a few small issues that I ran into during testing, w
 
 * User Stories - https://docs.google.com/document/d/1JO308vvk7BKkmmwOgG62_AT4C6tBEFypRaw2r9NPWPM/edit?usp=share_link
 
-* API endpoints spreadsheet - https://docs.google.com/spreadsheets/d/12RVyZPDAlmanUx-98VLKu9mCzgStWquStDJq75A0pes/edit?usp=sharing
+* API Endpoints Spreadsheet - https://docs.google.com/spreadsheets/d/12RVyZPDAlmanUx-98VLKu9mCzgStWquStDJq75A0pes/edit?usp=sharing
 
 * ERD (entity relationship diagram) - https://lucid.app/lucidchart/3af0981c-1f3f-40a1-b08e-08b9ec132565/edit?viewport_loc=-571%2C-19%2C3437%2C1426%2C0_0&invitationId=inv_71e906c4-a567-48ff-9051-3689be6f57a8
 
