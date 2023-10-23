@@ -80,6 +80,7 @@ public class StockingStufferService {
         if (stockingStufferOptional.isPresent()) {
             stockingStufferOptional.get().setName(stockingStufferObject.getName());
             stockingStufferOptional.get().setDescription(stockingStufferObject.getDescription());
+            stockingStufferOptional.get().setTag(stockingStufferObject.getTag());
             stockingStufferRepository.save(stockingStufferOptional.get());
             return stockingStufferOptional;
         } else {
