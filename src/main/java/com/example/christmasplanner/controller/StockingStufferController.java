@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class StockingStufferController {
 
     private StockingStufferService stockingStufferService;

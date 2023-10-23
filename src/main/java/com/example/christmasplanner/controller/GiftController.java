@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class GiftController {
 
     private GiftService giftService;

@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class DecorationController {
 
     private DecorationService decorationService;
