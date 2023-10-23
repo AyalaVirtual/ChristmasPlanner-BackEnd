@@ -18,14 +18,18 @@ public class StockingStuffer {
     @Column
     private String description;
 
+    @Column
+    private String tag;
+
 
     public StockingStuffer() {
     }
 
-    public StockingStuffer(Long id, String name, String description) {
+    public StockingStuffer(Long id, String name, String description, String tag) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.tag = tag;
     }
 
 
@@ -53,6 +57,14 @@ public class StockingStuffer {
         this.description = description;
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
 
     @Override
     public String toString() {
@@ -60,6 +72,7 @@ public class StockingStuffer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", tag='" + tag + '\'' +
                 '}';
     }
 }
