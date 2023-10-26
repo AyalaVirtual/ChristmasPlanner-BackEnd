@@ -90,7 +90,7 @@ public class SeedData implements CommandLineRunner {
         decoration9.setName("Christmas Card Garland");
         decoration9.setMaterials("Old Christmas cards, twine");
         decoration9.setDirections("Cut old Christmas cards into shapes and string them onto twine to create a card garland.");
-        decoration9.setImage("https://2.bp.blogspot.com/-IFwlJqTylm4/UM5XlXRhmZI/AAAAAAAAAFY/x8zMYUrGtGg/s640/Garland+card+display+001.jpg");
+        decoration9.setImage("https://www.thesunnysideupblog.com/wp-content/uploads/2014/12/christmas-card-picture-garland-634x422.jpg");
         decorationRepository.save(decoration9);
 
         Decoration decoration10 = new Decoration();
@@ -116,10 +116,10 @@ public class SeedData implements CommandLineRunner {
         giftRepository.save(gift2);
 
         Gift gift3 = new Gift();
-        gift3.setName("Personalized Christmas Storybook");
-        gift3.setDescription("Create a custom Christmas storybook featuring the recipient's name, making it a cherished keepsake.");
-        gift3.setTag("kids, children");
-        gift3.setImage("https://assets.website-files.com/57513cfafcdc27ff2e4df970/5cc9605ed546875e61762fd7_Website_NBC_Cover.jpg");
+        gift3.setName("Handmade Christmas Blanket");
+        gift3.setDescription("Create a hand-knitted or crocheted Christmas blanket featuring festive designs, making it a cherished keepsake.");
+        gift3.setTag("men, women");
+        gift3.setImage("https://i.etsystatic.com/14550079/r/il/281589/3620218836/il_1588xN.3620218836_djce.jpg");
         giftRepository.save(gift3);
 
         Gift gift4 = new Gift();
@@ -130,10 +130,10 @@ public class SeedData implements CommandLineRunner {
         giftRepository.save(gift4);
 
         Gift gift5 = new Gift();
-        gift5.setName("Homemade Body Scrub");
-        gift5.setDescription("Create a luxurious body scrub using natural ingredients and festive scents.");
+        gift5.setName("Handmade Whipped Soap");
+        gift5.setDescription("Create a luxurious whipped cream body wash using natural ingredients, such as coconut oil and shea butter and essential oils with festive scents.");
         gift5.setTag("women");
-        gift5.setImage("https://alifeadjacent.com/wp-content/uploads/2020/12/diy_holiday_sugar_scrubs.jpg");
+        gift5.setImage("https://i.etsystatic.com/25757567/r/il/d47971/5352263194/il_1588xN.5352263194_c1rd.jpg");
         giftRepository.save(gift5);
 
         Gift gift6 = new Gift();
@@ -168,7 +168,7 @@ public class SeedData implements CommandLineRunner {
         gift10.setName("Handmade Wooden Wine Rack");
         gift10.setDescription("Craft a wooden wine rack with holiday motifs.");
         gift10.setTag("men");
-        gift10.setImage("https://i.etsystatic.com/7164259/r/il/ac0850/2497951909/il_1588xN.2497951909_2jvg.jpg");
+        gift10.setImage("https://i.etsystatic.com/7164259/r/il/56f6e2/2450260560/il_1588xN.2450260560_6h44.jpg");
         giftRepository.save(gift10);
 
 
@@ -201,24 +201,24 @@ public class SeedData implements CommandLineRunner {
         stockingStufferRepository.save(stockingStuffer4);
 
         StockingStuffer stockingStuffer5 = new StockingStuffer();
-        stockingStuffer5.setName("DIY Snowflake Soap");
-        stockingStuffer5.setDescription("Create snowflake-shaped soap with holiday scents.");
+        stockingStuffer5.setName("Wooden Candle Holders");
+        stockingStuffer5.setDescription("Create rustic style candle holders for tealights or your favorite holiday-scented candles.");
         stockingStuffer5.setTag("men, women");
-        stockingStuffer5.setImage("https://i.etsystatic.com/21747766/r/il/220609/4337907714/il_1588xN.4337907714_3vwu.jpg");
+        stockingStuffer5.setImage("https://i.etsystatic.com/30449110/r/il/c60fe7/4328917640/il_1588xN.4328917640_g4jt.jpg");
         stockingStufferRepository.save(stockingStuffer5);
 
         StockingStuffer stockingStuffer6 = new StockingStuffer();
         stockingStuffer6.setName("Scented Playdough Packs");
         stockingStuffer6.setDescription("Create small packs of scented playdough.");
         stockingStuffer6.setTag("children, kids");
-        stockingStuffer6.setImage("https://i.etsystatic.com/27225411/r/il/4237cf/3475703071/il_1588xN.3475703071_jig3.jpg");
+        stockingStuffer6.setImage("https://i.etsystatic.com/27225411/r/il/45f8d7/5391385994/il_1588xN.5391385994_foa1.jpg");
         stockingStufferRepository.save(stockingStuffer6);
 
         StockingStuffer stockingStuffer7 = new StockingStuffer();
         stockingStuffer7.setName("Homemade Crayon Shapes");
         stockingStuffer7.setDescription("Craft unique crayon shapes in holiday molds.");
         stockingStuffer7.setTag("children, kids");
-        stockingStuffer7.setImage("https://i.etsystatic.com/24424497/r/il/fdaaa2/5025261630/il_1588xN.5025261630_6akv.jpg");
+        stockingStuffer7.setImage("https://i.etsystatic.com/6568236/r/il/e309ab/4792191804/il_1588xN.4792191804_igxg.jpg");
         stockingStufferRepository.save(stockingStuffer7);
 
         StockingStuffer stockingStuffer8 = new StockingStuffer();
