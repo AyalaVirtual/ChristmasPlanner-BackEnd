@@ -184,7 +184,7 @@ public class SeedData implements CommandLineRunner {
 
         StockingStuffer stockingStuffer6 = new StockingStuffer();
         stockingStuffer6.setName("Scented Playdough Packs");
-        stockingStuffer6.setDescription("Create small packs of scented playdough.");
+        stockingStuffer6.setDescription("Create small packs of scented playdough with glitter and small figurines.");
         stockingStuffer6.setTag("children, kids");
         stockingStufferRepository.save(stockingStuffer6);
 
