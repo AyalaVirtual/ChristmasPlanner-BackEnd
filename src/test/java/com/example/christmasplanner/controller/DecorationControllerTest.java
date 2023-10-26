@@ -35,11 +35,11 @@ public class DecorationControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    Decoration DECORATION_1 = new Decoration(1L, "Gingerbread House Village", "Gingerbread cookies, royal icing, candies, small figurines", "Decorate gingerbread houses and arrange them alongside small figurines to complete the village look.");
+    Decoration DECORATION_1 = new Decoration(1L, "Gingerbread House Village", "Gingerbread cookies, royal icing, candies, small figurines", "Decorate gingerbread houses and arrange them alongside small figurines to complete the village look.", "https://busybeingjennifer.com/wp-content/uploads/2018/10/DSC_0136-1024x759.jpg");
 
-    Decoration DECORATION_2 = new Decoration(2L, "Candy Cane Wreath", "Red and white candy canes, ribbon", "Craft a wreath by securing red and white candy canes in a circular shape using ribbon. Hang it on your door or wall for a sweet and simple decoration.");
+    Decoration DECORATION_2 = new Decoration(2L, "Candy Cane Wreath", "Red and white candy canes, ribbon", "Craft a wreath by securing red and white candy canes in a circular shape using ribbon. Hang it on your door or wall for a sweet and simple decoration.", "https://www.poughkeepsiejournal.com/gcdn/presto/2021/12/03/PWES/22497a9a-77f0-4d4e-a821-2bb0de89cef6-20211127_171627.jpg?crop=3914,2202,x0,y161&width=660&height=372&format=pjpg&auto=webp");
 
-    Decoration DECORATION_3 = new Decoration(3L, "Floating Candle Centerpiece", "Clear glass vases or bowls, water, floating candles, holly leaves, cranberries", "Fill clear glass vases or bowls with water, add floating candles, and garnish with holly leaves and cranberries.");
+    Decoration DECORATION_3 = new Decoration(3L, "Floating Candle Centerpiece", "Clear glass vases or bowls, water, floating candles, holly leaves, cranberries", "Fill clear glass vases or bowls with water, add floating candles, and garnish with holly leaves and cranberries.", "https://i1.wp.com/www.thinkmakeshareblog.com/wp-content/uploads/Snowglobe-Workshop-_-thinkmakeshareblog-4.jpg?w=822&ssl=1");
 
 
     /**
@@ -81,6 +81,7 @@ public class DecorationControllerTest {
                 .andExpect(jsonPath("$.data.name").value(DECORATION_1.getName()))
                 .andExpect(jsonPath("$.data.materials").value(DECORATION_1.getMaterials()))
                 .andExpect(jsonPath("$.data.directions").value(DECORATION_1.getDirections()))
+                .andExpect(jsonPath("$.data.image").value(DECORATION_1.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -110,6 +111,7 @@ public class DecorationControllerTest {
                 .andExpect(jsonPath("$.data.name").value(DECORATION_1.getName()))
                 .andExpect(jsonPath("$.data.materials").value(DECORATION_1.getMaterials()))
                 .andExpect(jsonPath("$.data.directions").value(DECORATION_1.getDirections()))
+                .andExpect(jsonPath("$.data.image").value(DECORATION_1.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -148,8 +150,8 @@ public class DecorationControllerTest {
     public void updateDecorationRecord_success() throws Exception {
 
         Long decorationId = 1L;
-        Decoration decoration = new Decoration(decorationId, "original name", "original materials", "original description");
-        Decoration updatedDecoration = new Decoration(decorationId, "updated name", "updated materials", "updated description");
+        Decoration decoration = new Decoration(decorationId, "original name", "original materials", "original description", "https://inhabitat.com/wp-content/blogs.dir/1/files/2013/11/Orange-pomander-centerpiece.jpg");
+        Decoration updatedDecoration = new Decoration(decorationId, "updated name", "updated materials", "updated description", "https://m.media-amazon.com/images/I/81z16eqUOfL._AC_SX679_.jpg");
 
         when(decorationService.updateDecoration(anyLong(), Mockito.any(Decoration.class))).thenReturn(Optional.of(updatedDecoration));
 
@@ -165,6 +167,7 @@ public class DecorationControllerTest {
                 .andExpect(jsonPath("$.data.name").value(updatedDecoration.getName()))
                 .andExpect(jsonPath("$.data.materials").value(updatedDecoration.getMaterials()))
                 .andExpect(jsonPath("$.data.directions").value(updatedDecoration.getDirections()))
+                .andExpect(jsonPath("$.data.image").value(updatedDecoration.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }

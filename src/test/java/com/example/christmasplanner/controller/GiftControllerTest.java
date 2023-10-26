@@ -36,9 +36,9 @@ public class GiftControllerTest {
     ObjectMapper objectMapper;
 
 
-    Gift GIFT_1 = new Gift(1L, "Custom Knit or Crochet Gifts", "Knit or crochet cozy scarves, mittens, or blankets in holiday colors. Handmade, warm gifts for the winter season.", "men, women, children, kids");
-    Gift GIFT_2 = new Gift(1L, "Homemade Peppermint Bath Bombs", "Craft peppermint-scented bath bombs with natural ingredients. Package them in festive containers for a relaxing bath experience.", "women");
-    Gift GIFT_3 = new Gift(1L, "Homemade Potpourri Sachets", "Mix dried citrus slices, cinnamon sticks, cloves, and pinecones to create fragrant potpourri sachets. Bundle them in decorative fabric.", "women, men");
+    Gift GIFT_1 = new Gift(1L, "Custom Knit or Crochet Gifts", "Knit or crochet cozy scarves, mittens, or blankets in holiday colors. Handmade, warm gifts for the winter season.", "men, women, children, kids", "image link");
+    Gift GIFT_2 = new Gift(1L, "Homemade Peppermint Bath Bombs", "Craft peppermint-scented bath bombs with natural ingredients. Package them in festive containers for a relaxing bath experience.", "women", "image link");
+    Gift GIFT_3 = new Gift(1L, "Homemade Potpourri Sachets", "Mix dried citrus slices, cinnamon sticks, cloves, and pinecones to create fragrant potpourri sachets. Bundle them in decorative fabric.", "women, men", "image link");
 
 
     /**
@@ -80,6 +80,7 @@ public class GiftControllerTest {
                 .andExpect(jsonPath("$.data.name").value(GIFT_1.getName()))
                 .andExpect(jsonPath("$.data.description").value(GIFT_1.getDescription()))
                 .andExpect(jsonPath("$.data.tag").value(GIFT_1.getTag()))
+                .andExpect(jsonPath("$.data.image").value(GIFT_1.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -109,6 +110,7 @@ public class GiftControllerTest {
                 .andExpect(jsonPath("$.data.name").value(GIFT_1.getName()))
                 .andExpect(jsonPath("$.data.description").value(GIFT_1.getDescription()))
                 .andExpect(jsonPath("$.data.tag").value(GIFT_1.getTag()))
+                .andExpect(jsonPath("$.data.image").value(GIFT_1.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -146,8 +148,8 @@ public class GiftControllerTest {
     @Test
     public void updateGiftRecord_success() throws Exception {
         Long giftId = 1L;
-        Gift gift = new Gift(giftId, "Original name", "Original desciption", "Original tag");
-        Gift updatedGift = new Gift(giftId, "Updated name", "Updated description", "Updated tag");
+        Gift gift = new Gift(giftId, "Original name", "Original desciption", "Original tag", "Original link");
+        Gift updatedGift = new Gift(giftId, "Updated name", "Updated description", "Updated tag", "Updated link");
 
         when(giftService.updateGift(anyLong(), Mockito.any(Gift.class))).thenReturn(Optional.of(updatedGift));
 
@@ -163,6 +165,7 @@ public class GiftControllerTest {
                 .andExpect(jsonPath("$.data.name").value(updatedGift.getName()))
                 .andExpect(jsonPath("$.data.description").value(updatedGift.getDescription()))
                 .andExpect(jsonPath("$.data.tag").value(updatedGift.getTag()))
+                .andExpect(jsonPath("$.data.image").value(updatedGift.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
