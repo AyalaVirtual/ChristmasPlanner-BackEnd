@@ -81,6 +81,7 @@ public class GiftService {
             giftOptional.get().setName(giftObject.getName());
             giftOptional.get().setDescription(giftObject.getDescription());
             giftOptional.get().setTag(giftObject.getTag());
+            giftOptional.get().setImage(giftObject.getImage());
             giftRepository.save(giftOptional.get());
             return giftOptional;
         } else {

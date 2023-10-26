@@ -81,6 +81,7 @@ public class DecorationService {
             decorationOptional.get().setName(decorationObject.getName());
             decorationOptional.get().setMaterials(decorationObject.getMaterials());
             decorationOptional.get().setDirections(decorationObject.getDirections());
+            decorationOptional.get().setImage(decorationObject.getImage());
             decorationRepository.save(decorationOptional.get());
             return decorationOptional;
         } else {
