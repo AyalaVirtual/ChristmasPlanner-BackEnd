@@ -240,7 +240,7 @@ public class SeedData implements CommandLineRunner {
         stockingStuffer10.setDescription("Create a blend of ground nutmeg, cinnamon, and a touch of allspice. Package it in small spice jars. It's perfect for spicing up eggnog, lattes, or desserts.");
         stockingStuffer10.setTag("men, women");
         stockingStuffer10.setImage("https://i.etsystatic.com/33446068/r/il/17e1d5/4759152760/il_1588xN.4759152760_su35.jpg");
-        stockingStufferRepository.save(stockingStuffer7);
+        stockingStufferRepository.save(stockingStuffer10);
 
     }
 }
