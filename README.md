@@ -126,15 +126,12 @@ For the final step of the planning phase, I created an ERD (entity relationship 
 | POST      | /api/decorations/             | Create a decoration idea             | Public   |
 | GET       | /api/decorations/             | Get all decoration ideas             | Public   |
 | GET       | /api/decorations/1/           | Get a decoration idea                | Public   |
-| PUT       | /api/decorations/1/           | Update a decoration idea             | Public   |
 | POST      | /api/gifts/                   | Create a gift idea                   | Public   |
 | GET       | /api/gifts/                   | Get all gift ideas                   | Public   |
 | GET       | /api/gifts/1/                 | Get a gift idea                      | Public   |
-| PUT       | /api/gifts/1/                 | Update a gift idea                   | Public   |
 | POST      | /api/stockingstuffers/        | Creating a stocking stuffer idea     | Public   |
 | GET       | /api/stockingstuffers/        | Get all stocking stuffer ideas       | Public   |
 | GET       | /api/stockingstuffers/1/      | Get a stocking stuffer idea          | Public   |
-| PUT       | /api/stockingstuffers/1/      | Update a stocking stuffer idea       | Public   |
 
 
 
@@ -156,8 +153,7 @@ As a user I want to view a specific Christmas decorating idea so that I can foll
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can filter search results by Christmas decorating ideas.
-* Search results should return an exact match to the user's search criteria.
+* User can click a link from the main page of search results that will bring them to a page with that specific decoration.
 
 
 <b>User Story 3:</b>
@@ -166,99 +162,67 @@ As a user I want to add a new Christmas decorating idea so that I can share my d
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can add new Christmas decorating ideas, specifying the name, materials needed, and directions. 
+* User can add new Christmas decorating ideas, specifying the name, materials needed, directions, and the URL of an image showing the finished product.
 * User can save the Christmas decorating idea to the overall list of Christmas decorating inspiration.
 
 
 <b>User Story 4:</b>
 <br>
-As a user I want to update/edit the details of a Christmas decorating idea, including the name, materials needed, and directions. (PUT Christmas decorating idea)
-
-<b>Acceptance Criteria:</b>
-<br>
-* User can edit/update Christmas decorating ideas. 
-* User can save the updated information for specific Christmas decorating ideas.
-
-
-<b>User Story 5:</b>
-<br>
 As a user I want to view a list of all gift ideas for inspiration for my Christmas shopping. (GET all gift ideas)
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can search for all gift ideas. 
+* User can search for all gift ideas.
 * Search results should display a list of all gift ideas.
 
 
-<b>User Story 6:</b>
+<b>User Story 5:</b>
 <br>
 As a user I want to view a specific gift idea for inspiration for my Christmas shopping. (GET gift idea by id)
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can filter search results for gift ideas. 
-* Search results should return an exact match to the user's search criteria.
+* User can click a link from the main page of search results that will bring them to a page with that specific gift.
 
 
-<b>User Story 7:</b>
+<b>User Story 6:</b>
 <br>
 As a user I want to add a new gift idea so that I can share my gift ideas with other users. (POST gift idea)
 
 <b>Acceptance Criteria:</b>
 <br>
 
-* User can add new gift ideas, specifying the name and description. 
+* User can add new gift ideas, specifying the name and description.
 * User can save the gift idea to the overall list of gift ideas for inspiration.
 
 
-<b>User Story 8:</b>
-<br>
-As a user I want to update/edit the details of a gift idea, including the name and description. (PUT gift idea)
-
-<b>Acceptance Criteria:</b>
-<br>
-* User can edit/update gift ideas. 
-* User can save the updated information for specific gift ideas.
-
-
-<b>User Story 9:</b>
+<b>User Story 7:</b>
 <br>
 As a user I want to view a list of all the stocking stuffer ideas for inspiration for my Christmas shopping. (GET all stocking stuffer ideas)
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can search for all stocking stuffer ideas.  
+* User can search for all stocking stuffer ideas.
 * Search results should display a list of all stocking stuffer ideas.
 
 
-<b>User Story 10:</b>
+<b>User Story 8:</b>
 <br>
 As a user I want to view a specific stocking stuffer idea for inspiration for my Christmas shopping. (GET stocking stuffer idea by id)
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can filter search results for stocking stuffer ideas. 
-* Search results should return an exact match to the user's search criteria.
+* User can click a link from the main page of search results that will bring them to a page with that specific stocking stuffer.
 
 
-<b>User Story 11:</b>
+<b>User Story 9:</b>
 <br>
 As a user I want to add a new stocking stuffer idea so that I can share my stocking stuffer ideas with other users. (POST stocking stuffer idea)
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can add new stocking stuffer ideas, specifying the name and description. 
+* User can add new stocking stuffer ideas, specifying the name and description.
 * User can save the stocking stuffer idea to the overall list of stocking stuffer ideas for inspiration.
-
-
-<b>User Story 12:</b>
-<br>
-As a user I want to update/edit the details of a stocking stuffer idea, including the name and description. (PUT stocking stuffer idea)
-
-<b>Acceptance Criteria:</b>
-<br>
-* User can edit/update stocking stuffer ideas. 
-* User can save the updated information for specific stocking stuffer ideas.
 
 
 
