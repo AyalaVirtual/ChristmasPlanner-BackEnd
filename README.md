@@ -192,7 +192,7 @@ As a user I want to add a new gift idea so that I can share my gift ideas with o
 <b>Acceptance Criteria:</b>
 <br>
 
-* User can add new gift ideas, specifying the name and description.
+* User can add new gift ideas, specifying the name, description, and the URL of an image showing the finished product.
 * User can save the gift idea to the overall list of gift ideas for inspiration.
 
 
@@ -221,7 +221,7 @@ As a user I want to add a new stocking stuffer idea so that I can share my stock
 
 <b>Acceptance Criteria:</b>
 <br>
-* User can add new stocking stuffer ideas, specifying the name and description.
+* User can add new stocking stuffer ideas, specifying the name, description, and the URL of an image showing the finished product.
 * User can save the stocking stuffer idea to the overall list of stocking stuffer ideas for inspiration.
 
 
