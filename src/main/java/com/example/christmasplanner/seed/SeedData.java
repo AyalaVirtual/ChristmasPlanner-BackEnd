@@ -69,7 +69,7 @@ public class SeedData implements CommandLineRunner {
         decoration6.setName("Handmade Stockings");
         decoration6.setMaterials("Fabric, sewing machine, felt, ribbon");
         decoration6.setDirections("Sew personalized stockings with festive fabric and decorate with felt and ribbon.");
-        decoration6.setImage("https://m.media-amazon.com/images/I/81zjo7kHyEL._AC_SY879_.jpg");
+        decoration6.setImage("https://farm8.staticflickr.com/7543/16197556246_764474afdc.jpg");
         decorationRepository.save(decoration6);
 
         Decoration decoration7 = new Decoration();
@@ -102,63 +102,73 @@ public class SeedData implements CommandLineRunner {
 
 
         Gift gift1 = new Gift();
-        gift1.setName("Custom Photo Calendar");
-        gift1.setDescription("Create a personalized calendar with favorite photos and memories for a unique and thoughtful gift.");
+        gift1.setName("Christmas Potpourri");
+        gift1.setDescription("Create a homemade potpourri blend with all natural ingredients. Some ingredients you could use ingredients such as a fresh orange and cranberries, as well as traditional holiday spices like cinnamon, nutmeg and cloves.");
         gift1.setTag("men, women");
+        gift1.setImage("https://www.rd.com/wp-content/uploads/2017/12/10_Potpourri_26-Handmade-Gifts-for-Everyone-on-Your-List-Lindsey-Galvez.jpg?fit=700%2C467?fit=700,700");
         giftRepository.save(gift1);
 
         Gift gift2 = new Gift();
         gift2.setName("Holiday-themed Scented Candles");
         gift2.setDescription("Craft scented candles with Christmas scents like cinnamon, pine, and gingerbread.");
         gift2.setTag("women");
+        gift2.setImage("https://i.etsystatic.com/19693480/r/il/143bc6/2126686785/il_1588xN.2126686785_m2ja.jpg");
         giftRepository.save(gift2);
 
         Gift gift3 = new Gift();
         gift3.setName("Personalized Christmas Storybook");
         gift3.setDescription("Create a custom Christmas storybook featuring the recipient's name, making it a cherished keepsake.");
-        gift3.setTag("men, women");
+        gift3.setTag("kids, children");
+        gift3.setImage("https://assets.website-files.com/57513cfafcdc27ff2e4df970/5cc9605ed546875e61762fd7_Website_NBC_Cover.jpg");
         giftRepository.save(gift3);
 
         Gift gift4 = new Gift();
         gift4.setName("Handmade Beard Balm");
         gift4.setDescription("Create a DIY beard balm using natural ingredients and festive scents like peppermint or pine.");
         gift4.setTag("men");
+        gift4.setImage("https://www.growforagecookferment.com/wp-content/uploads/2017/11/juniper-spice-beard-balm-1.jpg");
         giftRepository.save(gift4);
 
         Gift gift5 = new Gift();
         gift5.setName("Homemade Body Scrub");
         gift5.setDescription("Create a luxurious body scrub using natural ingredients and festive scents.");
         gift5.setTag("women");
+        gift5.setImage("https://alifeadjacent.com/wp-content/uploads/2020/12/diy_holiday_sugar_scrubs.jpg");
         giftRepository.save(gift5);
 
         Gift gift6 = new Gift();
         gift6.setName("Handmade Stuffed Animals");
-        gift6.setDescription("Sew adorable stuffed animals in holiday attire.");
+        gift6.setDescription("Sew, knit, or crochet adorable stuffed animals in holiday attire.");
         gift6.setTag("children, kids");
+        gift6.setImage("https://www.crazypatterns.net/uploads/cache/items/2021/11/75697/preview/crochet-pattern-deer-gingerbread-and-snowman-christmas-bundle-3985097716-600x450.jpg");
         giftRepository.save(gift6);
 
         Gift gift7 = new Gift();
         gift7.setName("Handmade Jewelry");
         gift7.setDescription("Craft unique jewelry pieces using beads, wire, and gemstones.");
         gift7.setTag("women");
+        gift7.setImage("https://i.etsystatic.com/7483547/r/il/e8ab4f/2565221733/il_1588xN.2565221733_emz0.jpg");
         giftRepository.save(gift7);
 
         Gift gift8 = new Gift();
         gift8.setName("Homemade Peppermint Bark");
         gift8.setDescription("Make delicious peppermint bark in holiday-themed packaging.");
         gift8.setTag("men, women");
+        gift8.setImage("https://cdn.greatlifepublishing.net/wp-content/uploads/sites/2/2014/01/22141206/peppermint-bark-recipe.jpg");
         giftRepository.save(gift8);
 
         Gift gift9 = new Gift();
         gift9.setName("Crafted Advent Calendar");
         gift9.setDescription("Craft an advent calendar with small surprises for each day.");
         gift9.setTag("children, kids");
+        gift9.setImage("https://m.media-amazon.com/images/I/71doCJdeXEL._AC_SX679_.jpg");
         giftRepository.save(gift9);
 
         Gift gift10 = new Gift();
         gift10.setName("Handmade Wooden Wine Rack");
         gift10.setDescription("Craft a wooden wine rack with holiday motifs.");
         gift10.setTag("men");
+        gift10.setImage("https://i.etsystatic.com/7164259/r/il/ac0850/2497951909/il_1588xN.2497951909_2jvg.jpg");
         giftRepository.save(gift10);
 
 
@@ -166,60 +176,70 @@ public class SeedData implements CommandLineRunner {
         stockingStuffer1.setName("Miniature Christmas Scented Soaps");
         stockingStuffer1.setDescription("Tiny soaps in holiday scents like peppermint, evergreen, and spiced apple.");
         stockingStuffer1.setTag("men, women");
+        stockingStuffer1.setImage("https://i.etsystatic.com/8547159/r/il/3cbe73/1131246211/il_340x270.1131246211_q3mi.jpg");
         stockingStufferRepository.save(stockingStuffer1);
 
         StockingStuffer stockingStuffer2 = new StockingStuffer();
         stockingStuffer2.setName("Christmas-themed Cookie Mix in a Jar");
         stockingStuffer2.setDescription("Layered ingredients for making delicious Christmas cookies, complete with a recipe.");
         stockingStuffer2.setTag("men, women");
+        stockingStuffer2.setImage("https://i.etsystatic.com/16211445/r/il/59c80b/1733644805/il_1588xN.1733644805_k0fm.jpg");
         stockingStufferRepository.save(stockingStuffer2);
 
         StockingStuffer stockingStuffer3 = new StockingStuffer();
-        stockingStuffer3.setName("Festive Hot Cocoa Spoons");
-        stockingStuffer3.setDescription("Milk chocolate spoons with marshmallow toppings, ideal for stirring into a cup of hot cocoa.");
+        stockingStuffer3.setName("Festive Hot Cocoa Bombs");
+        stockingStuffer3.setDescription("Milk chocolate balls filled with chocolate milk powder and marshmallows. Just add hot milk and  stir to have a decadent and delicious cup of hot chocolate!");
         stockingStuffer3.setTag("men, women");
+        stockingStuffer3.setImage("https://i.etsystatic.com/7002621/r/il/c4f2af/4430509424/il_1588xN.4430509424_iikm.jpg");
         stockingStufferRepository.save(stockingStuffer3);
 
         StockingStuffer stockingStuffer4 = new StockingStuffer();
         stockingStuffer4.setName("DIY Bath Bombs");
         stockingStuffer4.setDescription("Craft bath bombs with soothing scents and festive shapes.");
         stockingStuffer4.setTag("women");
+        stockingStuffer4.setImage("https://i.etsystatic.com/14446965/r/il/7a8a56/4338326934/il_1588xN.4338326934_annu.jpg");
         stockingStufferRepository.save(stockingStuffer4);
 
         StockingStuffer stockingStuffer5 = new StockingStuffer();
         stockingStuffer5.setName("DIY Snowflake Soap");
         stockingStuffer5.setDescription("Create snowflake-shaped soap with holiday scents.");
-        stockingStuffer5.setTag("men");
+        stockingStuffer5.setTag("men, women");
+        stockingStuffer5.setImage("https://i.etsystatic.com/21747766/r/il/220609/4337907714/il_1588xN.4337907714_3vwu.jpg");
         stockingStufferRepository.save(stockingStuffer5);
 
         StockingStuffer stockingStuffer6 = new StockingStuffer();
         stockingStuffer6.setName("Scented Playdough Packs");
         stockingStuffer6.setDescription("Create small packs of scented playdough.");
         stockingStuffer6.setTag("children, kids");
+        stockingStuffer6.setImage("https://i.etsystatic.com/27225411/r/il/4237cf/3475703071/il_1588xN.3475703071_jig3.jpg");
         stockingStufferRepository.save(stockingStuffer6);
 
         StockingStuffer stockingStuffer7 = new StockingStuffer();
         stockingStuffer7.setName("Homemade Crayon Shapes");
         stockingStuffer7.setDescription("Craft unique crayon shapes in holiday molds.");
         stockingStuffer7.setTag("children, kids");
+        stockingStuffer7.setImage("https://i.etsystatic.com/24424497/r/il/fdaaa2/5025261630/il_1588xN.5025261630_6akv.jpg");
         stockingStufferRepository.save(stockingStuffer7);
 
         StockingStuffer stockingStuffer8 = new StockingStuffer();
-        stockingStuffer8.setName("DIY Ornament Kits");
+        stockingStuffer8.setName("DIY Terrarium Ornament Kits");
         stockingStuffer8.setDescription("Assemble ornament kits with decorating materials.");
         stockingStuffer8.setTag("children, kids");
+        stockingStuffer8.setImage("https://i.etsystatic.com/18729668/r/il/3c05a5/4306294926/il_1588xN.4306294926_h4oq.jpg");
         stockingStufferRepository.save(stockingStuffer8);
 
         StockingStuffer stockingStuffer9 = new StockingStuffer();
         stockingStuffer9.setName("DIY Bath Salts");
         stockingStuffer9.setDescription("Prepare bath salts with holiday scents in small jars.");
         stockingStuffer9.setTag("women");
+        stockingStuffer9.setImage("https://i.etsystatic.com/31277148/r/il/e3b24c/3511953400/il_1588xN.3511953400_aqvp.jpg");
         stockingStufferRepository.save(stockingStuffer9);
 
         StockingStuffer stockingStuffer10 = new StockingStuffer();
         stockingStuffer10.setName("Eggnog Spice Blend");
         stockingStuffer10.setDescription("Create a blend of ground nutmeg, cinnamon, and a touch of allspice. Package it in small spice jars. It's perfect for spicing up eggnog, lattes, or desserts.");
         stockingStuffer10.setTag("men, women");
+        stockingStuffer10.setImage("https://i.etsystatic.com/33446068/r/il/17e1d5/4759152760/il_1588xN.4759152760_su35.jpg");
         stockingStufferRepository.save(stockingStuffer7);
 
     }

@@ -36,9 +36,9 @@ public class StockingStufferControllerTest {
     ObjectMapper objectMapper;
 
 
-    StockingStuffer STOCKING_STUFFER_1 = new StockingStuffer(1L, "Hand-Knit Fingerless Gloves", "Knit cozy fingerless gloves in festive colors for warmth and style during the winter.", "men, women, children, kids");
-    StockingStuffer STOCKING_STUFFER_2 = new StockingStuffer(1L, "Homemade Peppermint Lip Scrub", "Whip up a peppermint lip scrub using sugar, coconut oil, and peppermint extract. Package it in small jars.", "women");
-    StockingStuffer STOCKING_STUFFER_3 = new StockingStuffer(1L, "Handcrafted Wood Slice Ornaments", "Paint and decorate wood slices with holiday designs to create rustic ornaments for the tree.", "men");
+    StockingStuffer STOCKING_STUFFER_1 = new StockingStuffer(1L, "Hand-Knit Fingerless Gloves", "Knit cozy fingerless gloves in festive colors for warmth and style during the winter.", "men, women, children, kids", "image link");
+    StockingStuffer STOCKING_STUFFER_2 = new StockingStuffer(1L, "Homemade Peppermint Lip Scrub", "Whip up a peppermint lip scrub using sugar, coconut oil, and peppermint extract. Package it in small jars.", "women", "image link");
+    StockingStuffer STOCKING_STUFFER_3 = new StockingStuffer(1L, "Handcrafted Wood Slice Ornaments", "Paint and decorate wood slices with holiday designs to create rustic ornaments for the tree.", "men", "image link");
 
 
     /**
@@ -79,6 +79,7 @@ public class StockingStufferControllerTest {
                 .andExpect(jsonPath("$.data.name").value(STOCKING_STUFFER_1.getName()))
                 .andExpect(jsonPath("$.data.description").value(STOCKING_STUFFER_1.getDescription()))
                 .andExpect(jsonPath("$.data.tag").value(STOCKING_STUFFER_1.getTag()))
+                .andExpect(jsonPath("$.data.image").value(STOCKING_STUFFER_1.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -108,6 +109,7 @@ public class StockingStufferControllerTest {
                 .andExpect(jsonPath("$.data.name").value(STOCKING_STUFFER_1.getName()))
                 .andExpect(jsonPath("$.data.description").value(STOCKING_STUFFER_1.getDescription()))
                 .andExpect(jsonPath("$.data.tag").value(STOCKING_STUFFER_1.getTag()))
+                .andExpect(jsonPath("$.data.image").value(STOCKING_STUFFER_1.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }
@@ -145,8 +147,8 @@ public class StockingStufferControllerTest {
     @Test
     public void updateStockingStufferRecord_success() throws Exception {
         Long stockingStufferId = 1L;
-        StockingStuffer stockingStuffer = new StockingStuffer(stockingStufferId, "Original name", "Original description", "Original tag");
-        StockingStuffer updatedStockingStuffer = new StockingStuffer(stockingStufferId, "Updated name", "Updated description", "Updated tag");
+        StockingStuffer stockingStuffer = new StockingStuffer(stockingStufferId, "Original name", "Original description", "Original tag", "Original link");
+        StockingStuffer updatedStockingStuffer = new StockingStuffer(stockingStufferId, "Updated name", "Updated description", "Updated tag", "Updated link");
 
         when(stockingStufferService.updateStockingStuffer(anyLong(), Mockito.any(StockingStuffer.class))).thenReturn(Optional.of(updatedStockingStuffer));
 
@@ -162,6 +164,7 @@ public class StockingStufferControllerTest {
                 .andExpect(jsonPath("$.data.name").value(updatedStockingStuffer.getName()))
                 .andExpect(jsonPath("$.data.description").value(updatedStockingStuffer.getDescription()))
                 .andExpect(jsonPath("$.data.tag").value(updatedStockingStuffer.getTag()))
+                .andExpect(jsonPath("$.data.image").value(updatedStockingStuffer.getImage()))
                 .andExpect(jsonPath("$.message").value("success"))
                 .andDo(print());
     }

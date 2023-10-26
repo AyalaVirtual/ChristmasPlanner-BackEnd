@@ -247,7 +247,7 @@ The only hurdles I had were a few small issues that I ran into during testing, w
 
 ### Special Thanks
 
-* Leonardo Rodriguez - my instructor who taught me all the concepts used to build the front-end of this project, including HTML, CSS, TypeScript, and Angular. [GitHub](https://github.com/LRodriguez92) 
+* Leonardo Rodriguez - my instructor who not only taught me all the concepts used to build the front-end of this project (including HTML, CSS, TypeScript, and Angular), but also helped me conquer the issues with routing on the front-end, which turned out to be a major hurdle for me in this project. He helped me spot several errors that were keeping my code from working as intended and helped write the solution to work around the routing issues on the front-end for the GET and POST methods. [GitHub](https://github.com/LRodriguez92) 
 
 * Suresh Sigera - my instructor who taught me all the concepts used to build the back-end of this project, including Java, the Spring framework, and API testing tools such as Postman, MockMVC, and REST-Assured / Cucumber. [GitHub](https://github.com/sureshmelvinsigera)
 

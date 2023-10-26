@@ -81,6 +81,7 @@ public class StockingStufferService {
             stockingStufferOptional.get().setName(stockingStufferObject.getName());
             stockingStufferOptional.get().setDescription(stockingStufferObject.getDescription());
             stockingStufferOptional.get().setTag(stockingStufferObject.getTag());
+            stockingStufferOptional.get().setImage(stockingStufferObject.getImage());
             stockingStufferRepository.save(stockingStufferOptional.get());
             return stockingStufferOptional;
         } else {
