@@ -7,11 +7,9 @@ Welcome to the Christmas Inspiration API, a RESTful service designed to help use
 
 The Christmas Inspiration API is a powerful tool that allows users to:
 
-Discover Inspiration: Find a wide array of ideas and inspirations for DIY Christmas ornaments, decorations, gifts, and stocking stuffers to make your holiday season even more magical.
+Discover Inspiration: Find a wide array of ideas and inspirations for DIY Christmas ornaments, decorations, gifts, and stocking stuffers to make your holiday season even more magical. Explore through a vast collection of Christmas-themed projects and concepts.
 
-Search and Filter: Easily search, filter, and explore through a vast collection of Christmas-themed projects and concepts.
-
-Contribute and Personalize: Users can add and edit their own ideas for DIY decorations, gifts, and stocking stuffers, making it a collaborative platform for holiday creativity. 
+Contribute and Personalize: Users can add their own ideas for DIY decorations, gifts, and stocking stuffers, making it a collaborative platform for holiday creativity. 
 
 
 ## Technologies Used
@@ -228,7 +226,7 @@ As a user I want to add a new stocking stuffer idea so that I can share my stock
 
 ## Major Hurdles
 
-The only hurdles I had were a few small issues that I ran into during testing, which were caused by a few small mistakes in my service class. After going back over my code to locate and correct those errors, everything ran smoothly. I think my biggest hurdle will be figuring out how to link the front-end (Angular) to the back-end (Java/Spring). 
+The only hurdles I had were a few small issues that I ran into during testing, which were caused by a few small mistakes in my service class. After going back over my code to locate and correct those errors, everything ran smoothly. 
 
 
 
