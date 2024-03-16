@@ -72,7 +72,7 @@ public class GiftController {
 
 
     /**
-     * This sets the path for POST requests for a new gift and checks if the author exists or not before deciding whether to send an HTTP status message of CREATED or CONFLICT
+     * This sets the path for POST requests for a new gift and checks if the gift exists or not before deciding whether to send an HTTP status message of CREATED or CONFLICT
      *
      * @param giftObject represents the new gift the user is trying to create
      * @return the HTTP status message
