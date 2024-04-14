@@ -1,6 +1,6 @@
 # Christmas Planner Back-End 
 
-Welcome to the Christmas Inspiration API, a RESTful service designed to help users find inspiration for DIY Christmas ornaments, decorations, gift ideas, and stocking stuffers. This API empowers users to explore, contribute, and customize various Christmas-themed projects and concepts, making holiday planning and creativity a delightful experience. 
+The Christmas Inspiration API is a RESTful service designed to help users find inspiration for DIY Christmas ornaments, decorations, gift ideas, and stocking stuffers. This API empowers users to explore, contribute, and customize various Christmas-themed projects and concepts, making holiday planning and creativity a delightful experience. 
 
 
 ## About the Christmas Inspiration API 
