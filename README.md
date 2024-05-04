@@ -3,13 +3,13 @@
 This DIY holiday inspiration API is a RESTful service designed to help users find inspiration for DIY Christmas ornaments, decorations, gift ideas, and stocking stuffers. This API empowers users to explore, contribute, and customize various Christmas-themed projects and concepts, making holiday planning and creativity a delightful experience. 
 
 
-## About the Christmas Inspiration API 
+## Features  
 
-The Christmas Inspiration API is a powerful tool that allows users to:
+The DIY holiday inspiration API is a powerful tool that allows users to:
 
-Discover Inspiration: Find a wide array of ideas and inspirations for DIY Christmas ornaments, decorations, gifts, and stocking stuffers to make your holiday season even more magical. Explore through a vast collection of Christmas-themed projects and concepts.
+* <b>Discover Inspiration:</b> Find a wide array of ideas and inspirations for DIY Christmas ornaments, decorations, gifts, and stocking stuffers to make your holiday season even more magical. Explore through a vast collection of Christmas-themed projects and concepts.
 
-Contribute and Personalize: Users can add their own ideas for DIY decorations, gifts, and stocking stuffers, making it a collaborative platform for holiday creativity. 
+* <b>Contribute and Personalize:</b> Users can add their own ideas for DIY decorations, gifts, and stocking stuffers, making it a collaborative platform for holiday creativity. 
 
 
 ## Technologies Used
