@@ -113,7 +113,7 @@ For the final step of the planning phase, I created an ERD (entity relationship 
 
 ## Entity Relationship Diagram
 
-<img src="./images/ERD.png" alt="ERD">
+<img src="./images/HandmadeHolidaysHubERD.png" alt="ERD">
 
 
 
